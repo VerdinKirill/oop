@@ -1,20 +1,32 @@
 #include "BattleshipCell.h"
+#include <iostream>
 BattleshipCell::BattleshipCell()
 {
-	this -> hp = 2;
+	(this -> state) = BattleshipCellState::Unbroken;
+	std::cout << int(this->state) << '\n';
 }
 
-int BattleshipCell::GetHpValue()
+BattleshipCellState BattleshipCell::GetState()
 {
-	return hp;
+	return state;
 }
 
-void BattleshipCell::SetHpValue(int value)
+void BattleshipCell::SetState(BattleshipCellState state)
 {
-	this->hp = value;
+	this->state = state;
 }
 
 void BattleshipCell::AttackBattleshipCell()
-{
-	--this->hp;
+{	
+	// std::cout << unsigned(state);
+	if (state == BattleshipCellState::Destroyed)
+	{
+		std::cout << "Destroyed";
+	}
+	if (state == BattleshipCellState::Unbroken)
+	{
+		std::cout << "Damaged\n";
+	}
+	state = ((state == BattleshipCellState::Unbroken) ? BattleshipCellState::Damaged : BattleshipCellState:: Destroyed);
+	// std::cout <<  int(state) << "you";
 }

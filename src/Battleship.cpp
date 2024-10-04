@@ -1,17 +1,19 @@
 #include "Battleship.h"
 
 
-Battleship::Battleship(int length = 1, Direction direction = Direction::Up)
+Battleship::Battleship(int length, Direction direction)
 {
 	this->length = length;
-	this->battleship = std::vector<BattleshipCell>(length, BattleshipCell());
+	for (size_t i = 0; i<length; i++)
+	{
+		this->battleship.push_back(BattleshipCell());
+	}
 	this->direction = direction;
 }
 
 std::shared_ptr<BattleshipCell> Battleship::operator[](unsigned int index)
 {
-	std::shared_ptr<BattleshipCell> ptr(&battleship[index]);
-	return ptr;
+	return std::make_shared<BattleshipCell>(battleship[index]);
 }
 
 

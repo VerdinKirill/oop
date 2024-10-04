@@ -1,10 +1,13 @@
+#pragma once
+
+enum class BattleshipCellState{Destroyed, Damaged, Unbroken};
 class BattleshipCell{
 	public:
 	BattleshipCell();
-	int GetHpValue();
-	void SetHpValue(int value);
+	BattleshipCellState GetState();
+	void SetState(BattleshipCellState state);
 	void AttackBattleshipCell();
 
 	private:
-	unsigned char hp;	
+	BattleshipCellState state;	
 };

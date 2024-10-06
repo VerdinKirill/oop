@@ -16,6 +16,8 @@ class FieldCell{
 	void AttackCell();
 	friend std::ostream &operator<<(std::ostream& os, FieldCell& cell);
 	std::string to_string();
+	void SetNearWithShip();
+	bool IsNearWithShip();
 	
 	private:
 	FieldCellState state;

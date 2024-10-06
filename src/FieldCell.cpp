@@ -3,6 +3,7 @@
 FieldCell::FieldCell()
 {
 	this->ship_cell = nullptr;
+	this->near_with_ship = false;
 	this->state = FieldCellState::Unknown;
 }
 
@@ -56,7 +57,7 @@ std::string FieldCell::to_string()
 		value = "🟦";
 	}
 	else if (state == FieldCellState::Empty)
-		value = "⏺️";
+		value = "🌀";
 	else if (state == FieldCellState::Ship)
 	{	
 		auto state = ship_cell->GetState();
@@ -77,4 +78,14 @@ std::ostream &operator<<(std::ostream &os, FieldCell &cell)
 	auto value = cell.to_string();
 	os << value;
 	return os;
+}
+
+void FieldCell::SetNearWithShip()
+{
+	this->near_with_ship = true;
+}
+
+bool FieldCell::IsNearWithShip()
+{
+	return this->near_with_ship;
 }

@@ -48,6 +48,31 @@ int Field::GetHeight()
 	return height;
 }
 
+void Field::SetShipNear(int x, int y)
+{
+	this->field[y][x].SetNearWithShip();
+	if (x>0)
+	{
+		this->field[y][x-1].SetNearWithShip();
+		if (y>0)
+			this->field[y-1][x-1].SetNearWithShip();
+		if (y<height-1)
+			this->field[y+1][x-1].SetNearWithShip();
+	}
+	if (x < height)
+	{
+		this->field[y][x+1].SetNearWithShip();
+		if (y>0)
+			this->field[y-1][x+1].SetNearWithShip();
+		if (y<height-1)
+			this->field[y+1][x+1].SetNearWithShip();
+
+	}
+	if (y>0)
+		this->field[y-1][x].SetNearWithShip();
+	if (y < height)
+		this->field[y+1][x].SetNearWithShip();
+}
 void Field::SetBattleship(int x, int y, Battleship& battleship, Direction direction)
 {
 	if (!this->CheckPosBattleship(battleship, x, y))
@@ -60,8 +85,14 @@ void Field::SetBattleship(int x, int y, Battleship& battleship, Direction direct
 	for (int j = y; j != pos_tail.y + y_step; j += y_step)
 	{
 		for (int i = x; i != pos_tail.x + x_step; i += x_step)
-		{
+		{	
+			if (this->field[j][i].IsNearWithShip())
+			{
+				std::cout << "You tried set the ship with length " << int(battleship.GetLength()) << " near with other on coordinates x: " << i << " y: " << j  << "!\n";
+				return;
+			}
 			this->field[j][i].SetShipCell(battleship[std::max(abs(j - y), abs(x - i))]);
+			SetShipNear(i, j);
 		}
 	}
 }

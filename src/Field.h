@@ -4,6 +4,7 @@
 #include <cmath>
 #include <sstream>
 #include <iomanip>
+
 struct Pos{
 	int x;
 	int y;
@@ -33,5 +34,6 @@ class Field{
 	Pos GetTailPos(int x, int y, Battleship& battleship);
 	void row_to_string(const std::vector<std::string>& row, const std::vector<size_t>& widths, std::stringstream& ss);
 	void break_of_cells(const std::vector<size_t>& widths, std::stringstream& ss);
+	void SetShipNear(int x, int y);
 
 };

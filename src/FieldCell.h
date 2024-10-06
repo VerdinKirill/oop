@@ -14,7 +14,8 @@ class FieldCell{
 	const FieldCellState GetFieldState();
 	void OpenCellState();
 	void AttackCell();
-	friend std::ostream &operator<<(std::ostream& os, const FieldCell& cell);
+	friend std::ostream &operator<<(std::ostream& os, FieldCell& cell);
+	std::string to_string();
 	
 	private:
 	FieldCellState state;

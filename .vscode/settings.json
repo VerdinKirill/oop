@@ -71,6 +71,7 @@
 		"numeric": "cpp",
 		"random": "cpp",
 		"utility": "cpp",
-		"numbers": "cpp"
+		"numbers": "cpp",
+		"iomanip": "cpp"
 	}
 }

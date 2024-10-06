@@ -1,10 +1,10 @@
 #include "Battleship.h"
 
 
-Battleship::Battleship(int length, Direction direction)
+Battleship::Battleship(BattleshipLength length, Direction direction)
 {
 	this->length = length;
-	for (size_t i = 0; i<length; i++)
+	for (size_t i = 0; i<int(length); i++)
 	{
 		this->battleship.push_back(BattleshipCell());
 	}
@@ -27,7 +27,7 @@ void Battleship::SetDirection(Direction direction)
 	this->direction = direction;
 }
 
-unsigned char Battleship::GetLength()
+BattleshipLength Battleship::GetLength()
 {
 	return this->length;
 }

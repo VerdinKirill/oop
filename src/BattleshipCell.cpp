@@ -3,7 +3,7 @@
 BattleshipCell::BattleshipCell()
 {
 	(this -> state) = BattleshipCellState::Unbroken;
-	std::cout << int(this->state) << '\n';
+	// std::cout << int(this->state) << '\n';
 }
 
 BattleshipCellState BattleshipCell::GetState()
@@ -18,15 +18,6 @@ void BattleshipCell::SetState(BattleshipCellState state)
 
 void BattleshipCell::AttackBattleshipCell()
 {	
-	// std::cout << unsigned(state);
-	if (state == BattleshipCellState::Destroyed)
-	{
-		std::cout << "Destroyed";
-	}
-	if (state == BattleshipCellState::Unbroken)
-	{
-		std::cout << "Damaged\n";
-	}
 	state = ((state == BattleshipCellState::Unbroken) ? BattleshipCellState::Damaged : BattleshipCellState:: Destroyed);
 	// std::cout <<  int(state) << "you";
 }

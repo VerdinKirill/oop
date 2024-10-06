@@ -2,22 +2,22 @@
 #include <iostream>
 #include "Battleship.h"
 #include "Field.h"
+#include "ShipManager.h"
 #include <memory>
 
 int main()
 {
-    auto battleship = Battleship(3, Direction::Up);
-    auto field = Field(10, 10);
-    field.SetBattleship(1, 1, std::make_shared<Battleship>(battleship), Direction::Up);
+    // auto battleship = Battleship(3, Direction::Up);
+    auto ship_manager = ShipManager(1, 2, 3, 4);
+    auto field = Field(14, 18);
+    auto battleship = ship_manager.GetBattleship(BattleshipLength::Cell4, 0);
+    field.SetBattleship(1, 1, battleship, Direction::Up);
     field.AttackCell(1, 1);
     std::cout << field[1][1] << '\n';
-    for (int i = 0; i<field.GetHeight(); i++)
-    {
-        for (int j = 0; j < field.GetWidth(); j++)
-        {
-            std::cout << field[i][j]  << " ";
-        }
-        std::cout << "\n";
-    }
+    Field new_field(field);
+    // Field& new_field = field;
+    // field.AttackCell(1, 2);
+    // field.AttackCell(1, 2);
+    std::cout << field;
     return 0;
 }

@@ -24,11 +24,6 @@ void FieldCell::SetFieldCellState(FieldCellState state)
 
 void FieldCell::OpenCellState()
 {	
-	if (this->state != FieldCellState::Unknown)
-	{	
-		return;
-	}
-
 	if (this->ship_cell)
 	{	
 		this->SetFieldCellState(FieldCellState::Ship);

@@ -15,6 +15,7 @@ class Field{
 	Field(int width, int heigth);
 	Field(const Field& other_field);
 	Field& operator=(const Field& other_field);
+	void OpenField();
 	void SetBattleship(int x, int y, Battleship& battleship, Direction direction);
 	// void SetBattleship(char x, int y, std::shared_ptr<Battleship> battleship, Direction direction);
 	void AttackCell(int x, int y);
@@ -35,5 +36,5 @@ class Field{
 	void row_to_string(const std::vector<std::string>& row, const std::vector<size_t>& widths, std::stringstream& ss);
 	void break_of_cells(const std::vector<size_t>& widths, std::stringstream& ss);
 	void SetShipNear(int x, int y);
-
+	std::vector<Pos> GetPosesOfShip(Battleship& Battleship, int x, int y);
 };

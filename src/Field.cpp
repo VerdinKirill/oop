@@ -59,7 +59,7 @@ void Field::SetShipNear(int x, int y)
 		if (y<height-1)
 			this->field[y+1][x-1].SetNearWithShip();
 	}
-	if (x < height)
+	if (x < width-1)
 	{
 		this->field[y][x+1].SetNearWithShip();
 		if (y>0)
@@ -70,30 +70,48 @@ void Field::SetShipNear(int x, int y)
 	}
 	if (y>0)
 		this->field[y-1][x].SetNearWithShip();
-	if (y < height)
+	if (y < height-1)
 		this->field[y+1][x].SetNearWithShip();
 }
+
+std::vector<Pos> Field::GetPosesOfShip(Battleship& battleship, int x, int y)
+{
+	std::vector<Pos> positions;
+	Pos pos_tail = this->GetTailPos(x, y, battleship);
+	int x_step = (x < pos_tail.x) ? 1 : (x == pos_tail.x) ? 0: -1;
+	int y_step = (y < pos_tail.y) ? 1 : (y == pos_tail.y) ? 0: -1;
+	int j = y;
+	int i = x;
+	while(j != pos_tail.y+y_step || i != pos_tail.x + x_step)
+	{
+		positions.push_back({i, j});
+		i += x_step;
+		j += y_step;
+	}
+	return positions;
+}
+
 void Field::SetBattleship(int x, int y, Battleship& battleship, Direction direction)
 {
+	battleship.SetDirection(direction);
 	if (!this->CheckPosBattleship(battleship, x, y))
 		return;
-	Pos pos_tail = this->GetTailPos(x, y, battleship);
-	int x_step = (x < pos_tail.x) ? 1 : (x_step == pos_tail.x) ? 0
-															   : -1;
-	int y_step = (y < pos_tail.y) ? 1 : (y_step == pos_tail.y) ? 0
-															   : -1;
-	for (int j = y; j != pos_tail.y + y_step; j += y_step)
-	{
-		for (int i = x; i != pos_tail.x + x_step; i += x_step)
-		{	
-			if (this->field[j][i].IsNearWithShip())
-			{
-				std::cout << "You tried set the ship with length " << int(battleship.GetLength()) << " near with other on coordinates x: " << i << " y: " << j  << "!\n";
-				return;
-			}
-			this->field[j][i].SetShipCell(battleship[std::max(abs(j - y), abs(x - i))]);
-			SetShipNear(i, j);
+	// std:: cout << int(battleship.GetLength());
+	auto positions = GetPosesOfShip(battleship, x, y);
+	int count = 0;
+	for (auto pos : positions)
+	{	
+		// std::cout << '\n' << pos.x << " " << pos.y << '\n';
+		if (this->field[pos.y][pos.x].IsNearWithShip())
+		{
+			std::cout << "You tried set the ship with length " << int(battleship.GetLength()) << " near with other on coordinates x: " << pos.x << " y: " << pos.y << "!\n";
+			return;
 		}
+		this->field[pos.y][pos.x].SetShipCell(battleship[count++]);
+	}
+	for (auto pos: positions)
+	{
+		SetShipNear(pos.x, pos.y);
 	}
 }
 
@@ -195,4 +213,14 @@ std::ostream &operator<<(std::ostream& os, Field& field)
 	return os;
 }
 
-
+void Field::OpenField()
+{
+	for (size_t y = 0; y < height; y++)
+	{
+		for (size_t x = 0; x < width; x++)
+		{
+			field[y][x].OpenCellState();
+			// std::cout << int(field[y][x].GetFieldState());
+		}
+	}
+}

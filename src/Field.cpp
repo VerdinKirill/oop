@@ -5,6 +5,7 @@ Field::Field(int width, int height)
 	this->field = std::vector(height, std::vector<FieldCell>(width, FieldCell()));
 	this->width = width;
 	this->height = height;
+	this->double_damage_flag = false;
 }
 
 // Field::~Field()
@@ -122,6 +123,10 @@ void Field::AttackCell(int x, int y)
 	auto cell = &field[y][x];
 	cell->OpenCellState();
 	cell->AttackCell();
+	if (this->double_damage_flag == false)
+	{
+		cell->AttackCell();
+	}
 }
 
 std::vector<FieldCell> &Field::operator[](int index)
@@ -223,4 +228,9 @@ void Field::OpenField()
 			// std::cout << int(field[y][x].GetFieldState());
 		}
 	}
+}
+
+void Field::SetDoubleDamageFlag()
+{
+	this->double_damage_flag = true;
 }

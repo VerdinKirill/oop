@@ -7,13 +7,13 @@ FieldCell::FieldCell()
 	this->state = FieldCellState::Unknown;
 }
 
-FieldCell::FieldCell(std::shared_ptr<BattleshipCell> ship_cell)
+FieldCell::FieldCell(BattleshipCell& ship_cell)
 {
 	SetShipCell(ship_cell);
 }
-void FieldCell::SetShipCell(std::shared_ptr<BattleshipCell> ship_cell)
+void FieldCell::SetShipCell(BattleshipCell& ship_cell)
 {
-	this->ship_cell = ship_cell;
+	this->ship_cell = &ship_cell;
 }
 
 void FieldCell::SetFieldCellState(FieldCellState state)

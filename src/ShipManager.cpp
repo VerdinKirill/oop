@@ -10,6 +10,29 @@ void ShipManager::CreateBattleships(BattleshipLength length, unsigned num)
 
 }
 
+unsigned ShipManager::GetNumberBattleships()
+{
+    return this->length_4_ships+length_3_ships+length_2_ships+length_1_ships;
+}
+
+Battleship& ShipManager::operator[](unsigned n)
+{
+    if (n >= this->GetNumberBattleships())
+    {
+        return;
+    }
+    if (n - length_1_ships < 0)
+        return battleships[1][n];
+    n-=length_1_ships;
+    if (n-length_2_ships < 0)
+        return battleships[2][n];
+    n-=length_2_ships;
+    if(n-length_3_ships < 0)
+        return battleships[3][n];
+    n-=length_3_ships;
+    return battleships[4][n];
+}
+
 
 ShipManager::ShipManager(unsigned length_4_ships, unsigned length_3_ships, unsigned length_2_ships, unsigned length_1_ships)
 {   

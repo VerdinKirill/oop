@@ -11,9 +11,9 @@ Battleship::Battleship(BattleshipLength length, Direction direction)
 	this->direction = direction;
 }
 
-std::shared_ptr<BattleshipCell> Battleship::operator[](unsigned int index)
+BattleshipCell& Battleship::operator[](unsigned int index)
 {
-	return std::make_shared<BattleshipCell>(battleship[index]);
+	return battleship[index];
 }
 
 

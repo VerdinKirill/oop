@@ -8,8 +8,8 @@ enum class FieldCellState{Unknown, Empty, Ship};
 class FieldCell{
 	public:
 	FieldCell();
-	FieldCell(std::shared_ptr<BattleshipCell> ship_cell);
-	void SetShipCell(std::shared_ptr<BattleshipCell> ship_cell);
+	FieldCell(BattleshipCell& ship_cell);
+	void SetShipCell(BattleshipCell& ship_cell);
 	void SetFieldCellState(FieldCellState state);
 	const FieldCellState GetFieldState();
 	void OpenCellState();
@@ -21,6 +21,6 @@ class FieldCell{
 	
 	private:
 	FieldCellState state;
-	std::shared_ptr<BattleshipCell> ship_cell;
+	BattleshipCell* ship_cell;
 	bool near_with_ship;
 };

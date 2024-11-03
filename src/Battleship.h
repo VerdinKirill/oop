@@ -13,7 +13,7 @@ public:
 	void SetDirection(Direction direcrion);
 	Direction GetDirection();
 	BattleshipLength GetLength();
-	std::shared_ptr<BattleshipCell> operator[](unsigned int index);
+	BattleshipCell& operator[](unsigned int index);
 
 private:
 	std::vector<BattleshipCell> battleship;

@@ -1,6 +1,6 @@
 #pragma once
 
-enum class BattleshipCellState{Destroyed, Damaged, Unbroken};
+enum BattleshipCellState{Destroyed, Damaged, Unbroken};
 class BattleshipCell{
 	public:
 	BattleshipCell();

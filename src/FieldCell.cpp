@@ -7,11 +7,11 @@ FieldCell::FieldCell()
 	this->state = FieldCellState::Unknown;
 }
 
-FieldCell::FieldCell(BattleshipCell& ship_cell)
+FieldCell::FieldCell(BattleshipCell &ship_cell)
 {
 	SetShipCell(ship_cell);
 }
-void FieldCell::SetShipCell(BattleshipCell& ship_cell)
+void FieldCell::SetShipCell(BattleshipCell &ship_cell)
 {
 	this->ship_cell = &ship_cell;
 }
@@ -23,12 +23,13 @@ void FieldCell::SetFieldCellState(FieldCellState state)
 }
 
 void FieldCell::OpenCellState()
-{	
+{
 	if (this->ship_cell)
-	{	
+	{
 		this->SetFieldCellState(FieldCellState::Ship);
 	}
-	else this->SetFieldCellState(FieldCellState::Empty);
+	else
+		this->SetFieldCellState(FieldCellState::Empty);
 }
 
 const FieldCellState FieldCell::GetFieldState()
@@ -40,12 +41,13 @@ void FieldCell::AttackCell()
 {
 	if (this->ship_cell)
 	{	
+		std::cout << "yo attack battleship" << '\n';
 		this->ship_cell->AttackBattleshipCell();
 	}
 }
 
 std::string FieldCell::to_string()
-{	
+{
 	std::string value;
 	if (state == FieldCellState::Unknown)
 	{
@@ -54,7 +56,7 @@ std::string FieldCell::to_string()
 	else if (state == FieldCellState::Empty)
 		value = "🌀";
 	else if (state == FieldCellState::Ship)
-	{	
+	{
 		auto state = ship_cell->GetState();
 		if (state == BattleshipCellState::Destroyed)
 		{
@@ -83,4 +85,11 @@ void FieldCell::SetNearWithShip()
 bool FieldCell::IsNearWithShip()
 {
 	return this->near_with_ship;
+}
+
+bool FieldCell::isBattleshipCell()
+{
+	if (ship_cell == nullptr)
+		return false;
+	return true;
 }

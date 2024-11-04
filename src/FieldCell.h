@@ -4,12 +4,14 @@
 #include <iostream>
 #include <string>
 
-enum class FieldCellState{Unknown, Empty, Ship};
+enum FieldCellState{Unknown, Empty, Ship};
 class FieldCell{
 	public:
 	FieldCell();
 	FieldCell(BattleshipCell& ship_cell);
 	void SetShipCell(BattleshipCell& ship_cell);
+	bool isBattleshipCell();
+
 	void SetFieldCellState(FieldCellState state);
 	const FieldCellState GetFieldState();
 	void OpenCellState();

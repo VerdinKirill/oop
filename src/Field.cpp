@@ -8,9 +8,6 @@ Field::Field(int width, int height)
 	this->double_damage_flag = false;
 }
 
-// Field::~Field()
-// {
-// }
 
 Pos Field::GetTailPos(int x, int y, Battleship&  battleship)
 {
@@ -123,7 +120,7 @@ void Field::AttackCell(int x, int y)
 	auto cell = &field[y][x];
 	cell->OpenCellState();
 	cell->AttackCell();
-	if (this->double_damage_flag == false)
+	if (this->double_damage_flag == true)
 	{
 		cell->AttackCell();
 	}

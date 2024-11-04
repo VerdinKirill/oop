@@ -12,4 +12,18 @@ add_executable(battleships_war
     src/FieldCell.cpp
     src/FieldCell.h
     src/ShipManager.cpp
-    src/ShipManager.h)
+    src/ShipManager.h
+    src/skills/Bombardment.cpp
+    src/skills/Bombardment.h
+    src/skills/BombardmentFactory.cpp
+    src/skills/BombardmentFactory.h
+    src/skills/DoubleDamage.cpp
+    src/skills/DoubleDamage.h
+    src/skills/DoubleDamageFactory.cpp
+    src/skills/DoubleDamageFactory.h
+    src/skills/Scaner.cpp
+    src/skills/Scaner.h
+    src/skills/ScanerFactory.cpp
+    src/skills/ScanerFactory.h 
+    src/skills/Skill.h
+    src/skills/SkillFactory.h)

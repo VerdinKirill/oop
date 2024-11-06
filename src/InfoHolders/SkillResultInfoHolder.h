@@ -2,6 +2,7 @@
 
 #include "InfoHolder.h"
 #include "../Field.h"
+#include <iostream>
 
 struct Pos;
 
@@ -22,4 +23,5 @@ class SkillResultInfoHolder: public InfoHolder {
 		bool get_is_battleship_destroyed();
 		Pos& get_pos();
 		int get_damage();
+		void print();
 };

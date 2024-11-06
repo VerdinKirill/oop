@@ -47,5 +47,9 @@ int SkillResultInfoHolder::get_damage()
 {
 	return this->current_damage;
 }
-
+void SkillResultInfoHolder::print()
+{
+	std::cout << "damage:" << this->get_damage() << "\nisBattleship" << this->get_is_battleship_cell()
+    <<"\nPos" << this->get_pos().x << " " << this->get_pos().y;
+}
 

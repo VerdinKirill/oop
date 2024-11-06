@@ -7,3 +7,8 @@ Skill *ScanerFactory::createSkill(SkillInfoHolder* skill_holder)
 	auto& pos = skill_holder->getPos();
 	return new Scaner(field, pos);
 }
+
+std::string ScanerFactory::getName()
+{
+	return "Scaner";
+}

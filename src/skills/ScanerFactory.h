@@ -7,4 +7,5 @@ class ScanerFactory : public SkillFactory
 {	
 	public:
 	Skill *createSkill(SkillInfoHolder* skill_holder) override;
+	std::string getName() override;
 };

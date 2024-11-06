@@ -3,7 +3,7 @@
 
 Battleship::Battleship(BattleshipLength length, Direction direction)
 {	
-	std::cout << "Adress of ship in ship" << &*this << '\n';
+	// std::cout << "Adress of ship in ship" << &*this << '\n';
 	this->battleship = std::vector<BattleshipCell>(length, BattleshipCell(this));
 	this->length = length;
 	this->direction = direction;
@@ -31,7 +31,7 @@ BattleshipLength Battleship::GetLength()
 
 bool Battleship::isDestroyed()
 {	
-	std::cout << "len " << this->GetLength() << '\n';
+	// std::cout << "len " << this->GetLength() << '\n';
 	for (int i = 0; i < this->GetLength(); i++)
 	{
 		if(battleship[i].GetState() != BattleshipCellState::Destroyed)

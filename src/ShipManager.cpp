@@ -60,7 +60,7 @@ ShipManager::ShipManager(int length_4_ships,int length_3_ships, int length_2_shi
 Battleship &ShipManager::GetBattleship(BattleshipLength length,int num)
 {
     Battleship &battleship_output = *(battleships[int(length)][num]);
-    std::cout << "adress of battleship in shipmanager" << &battleship_output << '\n';
+    // std::cout << "adress of battleship in shipmanager" << &battleship_output << '\n';
     
     return battleship_output;
 }

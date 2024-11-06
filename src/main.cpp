@@ -8,6 +8,7 @@
 #include "skills/ScanerFactory.h"
 #include "skills/Skill.h"
 #include "skills/SkillFactory.h"
+#include "skills/SkillManager.h"
 
 int main()
 {
@@ -23,49 +24,66 @@ int main()
     SkillFactory *factory;
     Skill *skill;
 
-    auto &battleship = *&ship_manager.GetBattleship(BattleshipLength::Cell4, 0);
-    auto &battleship2 = *&ship_manager.GetBattleship(BattleshipLength::Cell3, 0);
-    std::cout << "len of 3length battleship "<< battleship2.GetLength() << '\n';
-    std::cout << "battleship len 4 adress: " << &battleship << '\n';
-    std::cout << "battleship len 3 adress: " << &battleship2 << '\n';
+    auto &battleship = ship_manager.GetBattleship(BattleshipLength::Cell4, 0);
+    auto &battleship2 = ship_manager.GetBattleship(BattleshipLength::Cell3, 0);
+
     field.SetBattleship(1, 1, battleship, Direction::Up);
     field.SetBattleship(4, 5, battleship2, Direction::Right);
     field.OpenField();
-    std::cout << field;
-    auto y = ship_manager[0];
-
-    factory = new ScanerFactory;
     auto pos = Pos{3, 3};
-    auto skill_info = new SkillInfoHolder(std::nullopt, &field, &pos);
-    skill = factory->createSkill(skill_info);
-    auto& skill_result = skill->use();
-    std::cout<< "is battleship in area of position " << skill_result.get_pos().x << " " <<skill_result.get_pos().y <<" ? : " << ((skill_result.get_is_battleship_cell())? true: false) << '\n';
-    // delete skill;
 
-    pos = Pos{4, 4};
-    skill_info->setPos(pos);
-    skill = factory->createSkill(skill_info);
-    skill_result = skill->use();
-    std::cout<< "is battleship in area of position " << skill_result.get_pos().x << " " << skill_result.get_pos().y <<" ? : " << ((skill_result.get_is_battleship_cell())? true: false) << '\n';
+    auto skill_info = new SkillInfoHolder(&ship_manager, &field, &pos);
+    // auto skillfactory = new BombardmentFactory();
+    // skill = skillfactory->createSkill(skill_info);
+    // skill->use();
+    // std::cout << field;
+    SkillManager skill_manager;
+    for (size_t i = 0; skill_manager.size(); i++)
+    {
+        skill_manager.printAvailableSkills();
+        auto skillfactory = skill_manager.getSkill();
+        std::cout << skillfactory->getName() << '\n';
+        auto result = (skillfactory->createSkill(skill_info))->use();
+        // result.print();
+        std::cout << field;
+    }
+    
+
+    
 
 
-    // delete factory;
-    factory = new DoubleDamageFactory;
-    skill = factory->createSkill(skill_info);
-    skill_result= skill->use();
-    skill_result = field.AttackCell(1, 1, &skill_result);
-    std::cout << field;
-    std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
-    skill_result= skill->use();
-    skill_result = field.AttackCell(1, 2, &skill_result);
-    std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
-    skill_result= skill->use();
-    skill_result = field.AttackCell(1, 3, &skill_result);
-    std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
-    skill_result= skill->use();
-    skill_result = field.AttackCell(1, 4, &skill_result);
-    std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
-    std::cout << field;
+
+
+    // factory = new ScanerFactory;
+    // skill = factory->createSkill(skill_info);
+    // auto& skill_result = skill->use();
+    // std::cout<< "is battleship in area of position " << skill_result.get_pos().x << " " <<skill_result.get_pos().y <<" ? : " << ((skill_result.get_is_battleship_cell())? true: false) << '\n';
+    // // delete skill;
+
+    // pos = Pos{4, 4};
+    // skill_info->setPos(pos);
+    // skill = factory->createSkill(skill_info);
+    // skill_result = skill->use();
+    // std::cout<< "is battleship in area of position " << skill_result.get_pos().x << " " << skill_result.get_pos().y <<" ? : " << ((skill_result.get_is_battleship_cell())? true: false) << '\n';
+
+
+    // // delete factory;
+    // factory = new DoubleDamageFactory;
+    // skill = factory->createSkill(skill_info);
+    // skill_result= skill->use();
+    // skill_result = field.AttackCell(1, 1, &skill_result);
+    // std::cout << field;
+    // std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
+    // skill_result= skill->use();
+    // skill_result = field.AttackCell(1, 2, &skill_result);
+    // std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
+    // skill_result= skill->use();
+    // skill_result = field.AttackCell(1, 3, &skill_result);
+    // std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
+    // skill_result= skill->use();
+    // skill_result = field.AttackCell(1, 4, &skill_result);
+    // std::cout << "Is battleship: "<< skill_result.get_is_battleship_cell() << "\nIs battleship destroyed: " << skill_result.get_is_battleship_destroyed() << '\n';
+    // std::cout << field;
 
 
 

@@ -22,7 +22,7 @@ SkillResultInfoHolder& Bombardment::use()
 		{	
 			BattleshipCell *n = &((*battleship)[j]);
 			std::cout << battleship << '\t' << &(*battleship) << '\n';
-			n->AttackBattleshipCell();
+			// n->AttackBattleshipCell();
 			std::cout<<"state:"<<n->GetState() << '\n';
 			cells.push_back(n);
 		}

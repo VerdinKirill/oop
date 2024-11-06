@@ -6,6 +6,6 @@ class DoubleDamage : public Skill{
 	Field* field;
 	public:
 	DoubleDamage(Field& field);
-	bool use() override;
+	SkillResultInfoHolder& use() override;
 
 };

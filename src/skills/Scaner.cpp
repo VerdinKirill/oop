@@ -6,17 +6,18 @@ Scaner::Scaner(Field &field, Pos &pos)
 	this->pos = pos;
 }
 
-bool Scaner::use()
-{
-	Field &current_field = *field;
+SkillResultInfoHolder &Scaner::use()
+{	
+	Field current_field = *field;
+	auto skill_result = new SkillResultInfoHolder();
+	skill_result->set_pos(this->pos);
 	int x = pos.x;
 	int y = pos.y;
-	int height = field->GetHeight();
-	int width = field->GetWidth();
-	if (current_field[y][x].isBattleshipCell() || (height > y + 1 && current_field[y + 1][x].isBattleshipCell())
-	|| (width > x + 1 && current_field[x + 1][y].isBattleshipCell()) ||(width > x + 1 && height > y + 1 && current_field[y][x].isBattleshipCell()))
+	int height = current_field.GetHeight();
+	int width = current_field.GetWidth();
+	if (current_field[y][x].isBattleshipCell() || (height > y + 1 && current_field[y + 1][x].isBattleshipCell()) || (width > x + 1 && current_field[y][x + 1].isBattleshipCell()) || (width > x + 1 && height > y + 1 && current_field[y + 1][x + 1].isBattleshipCell()))
 	{
-		return true;
+		skill_result->set_is_battleship_cell(true);
 	}
-	return false;
+	return *skill_result;
 }

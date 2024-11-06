@@ -2,10 +2,12 @@
 #include "Skill.h"
 #include "../Field.h"
 #include "../ShipManager.h"
+#include "../InfoHolders/SkillInfoHolder.h"
 #include <optional>
 
 class SkillFactory
 {	
 	public:
-	virtual Skill *createSkill(std::optional<Pos> pos = std::nullopt,  std::optional<Field*> field = std::nullopt, std::optional<ShipManager*>  ship_manager = std::nullopt) = 0;
+	virtual Skill *createSkill(SkillInfoHolder* skill_holder) = 0;
+	// virtual ~SkillFactory();
 };

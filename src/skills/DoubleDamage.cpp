@@ -5,8 +5,9 @@ DoubleDamage::DoubleDamage(Field& field)
 	this->field = &field;
 }
 
-bool DoubleDamage::use()
+SkillResultInfoHolder& DoubleDamage::use()
 {
-	this->field->SetDoubleDamageFlag();
-	return true;
+	auto result_info = new SkillResultInfoHolder();
+	result_info->set_damage(2);
+	return *result_info;
 }

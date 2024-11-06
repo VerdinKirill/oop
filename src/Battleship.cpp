@@ -1,21 +1,18 @@
 #include "Battleship.h"
 #include <iostream>
 
-
 Battleship::Battleship(BattleshipLength length, Direction direction)
-{
-	for (size_t i = 0; i<int(length); i++)
-	{
-		this->battleship.push_back(BattleshipCell());
-	}
+{	
+	std::cout << "Adress of ship in ship" << &*this << '\n';
+	this->battleship = std::vector<BattleshipCell>(length, BattleshipCell(this));
+	this->length = length;
 	this->direction = direction;
 }
 
-BattleshipCell& Battleship::operator[](unsigned int index)
+BattleshipCell &Battleship::operator[](unsigned int index)
 {
 	return battleship[index];
 }
-
 
 Direction Battleship::GetDirection()
 {
@@ -27,8 +24,19 @@ void Battleship::SetDirection(Direction direction)
 	this->direction = direction;
 }
 
-int Battleship::GetLength()
-{	
-	return battleship.size();
+BattleshipLength Battleship::GetLength()
+{
+	return length;
 }
 
+bool Battleship::isDestroyed()
+{	
+	std::cout << "len " << this->GetLength() << '\n';
+	for (int i = 0; i < this->GetLength(); i++)
+	{
+		if(battleship[i].GetState() != BattleshipCellState::Destroyed)
+			return false;
+	}
+	return true;
+
+}

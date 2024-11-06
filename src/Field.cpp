@@ -113,17 +113,32 @@ void Field::SetBattleship(int x, int y, Battleship& battleship, Direction direct
 	}
 }
 
-void Field::AttackCell(int x, int y)
-{
+SkillResultInfoHolder& Field::AttackCell(int x, int y, std::optional<SkillResultInfoHolder*> skill_result)
+{	
+	auto skill_result_new = new SkillResultInfoHolder();
+	auto pos = Pos{x, y};
+	skill_result_new->set_pos(pos);
 	if (!this->CheckPos(x, y))
-		return;
+		return *skill_result_new;
+	
 	auto cell = &field[y][x];
 	cell->OpenCellState();
-	cell->AttackCell();
-	if (this->double_damage_flag == true)
+	if (!cell->isBattleshipCell())
+		return *skill_result_new;
+
+	bool is_destroyed = false;
+	int curent_damage = 1;
+
+	if (skill_result.has_value())
+		curent_damage = skill_result.value()->get_damage();
+
+	for (int i = 0; i<curent_damage && is_destroyed == false; i++)
 	{
-		cell->AttackCell();
+		is_destroyed = cell->AttackCell();
 	}
+	skill_result_new->set_is_battleship_cell(true);
+	skill_result_new->set_is_battleship_destroyed(is_destroyed);
+	return *skill_result_new;
 }
 
 std::vector<FieldCell> &Field::operator[](int index)

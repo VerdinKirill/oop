@@ -1,14 +1,9 @@
 #include "ScanerFactory.h"
 
-Skill *ScanerFactory::createSkill(std::optional<Pos> pos, std::optional<Field *> field, std::optional<ShipManager *> ship_manager)
-{
-	if (pos == std::nullopt)
-	{
-		return nullptr;
-	}
-	if (field == std::nullopt)
-	{
-		return nullptr;
-	}
-	return new Scaner(*(field).value(), pos.value());
+
+Skill *ScanerFactory::createSkill(SkillInfoHolder* skill_holder)
+{	
+	auto& field = skill_holder->getField();
+	auto& pos = skill_holder->getPos();
+	return new Scaner(field, pos);
 }

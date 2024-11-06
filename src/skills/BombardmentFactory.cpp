@@ -1,11 +1,7 @@
 #include "BombardmentFactory.h"
 
-Skill *BombardmentFactory::createSkill(std::optional<Pos> pos, std::optional<Field *> field, std::optional<ShipManager *> ship_manager)
+Skill *BombardmentFactory::createSkill(SkillInfoHolder* skill_holder)
 {
-	if (ship_manager == std::nullopt)
-	{
-		return nullptr;
-	}
-	return new Bombardment(*(ship_manager.value()));
+	return new Bombardment(skill_holder->getShipManager());
 }
 

@@ -26,4 +26,10 @@ add_executable(battleships_war
     src/skills/ScanerFactory.cpp
     src/skills/ScanerFactory.h 
     src/skills/Skill.h
-    src/skills/SkillFactory.h)
+    src/skills/SkillFactory.h
+    src/InfoHolders/InfoHolder.h
+    src/InfoHolders/SkillInfoHolder.h
+    src/InfoHolders/SkillInfoHolder.cpp
+    src/InfoHolders/SkillResultInfoHolder.h
+    src/InfoHolders/SkillResultInfoHolder.cpp)
+

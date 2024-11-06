@@ -7,5 +7,5 @@ class Bombardment : public Skill{
 	ShipManager* ship_manager;
 	public:
 	Bombardment(ShipManager& ship_manager);
-	bool use() override;
+	SkillResultInfoHolder& use() override;
 };

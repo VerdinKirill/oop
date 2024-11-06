@@ -8,5 +8,5 @@ class Scaner: public Skill{
 	Pos pos;
 	public:
 	Scaner(Field& field, Pos& pos);
-	bool use() override;
+	SkillResultInfoHolder& use() override;
 };

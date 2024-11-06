@@ -4,8 +4,8 @@
 void ShipManager::CreateBattleships(BattleshipLength length,int num)
 {
     for (size_t i = 0; i < num; i++)
-    {
-        auto battleship = Battleship(length);
+    {   
+        auto battleship = new Battleship(length);
         battleships[int(length)].push_back(battleship);
     }
 }
@@ -25,28 +25,28 @@ Battleship &ShipManager::operator[](int n)
     int index = 0;
     if (n - length_1_ships < 0)
     {
-        return battleships[1][n];
+        return *battleships[1][n];
     }
     n -= length_1_ships;
     // std::cout << n << '\n';
     if (n - length_2_ships < 0)
     {
-        return battleships[2][n];
+        return *battleships[2][n];
     }
     n -= length_2_ships;
     // std::cout << n << '\n';
     if (n - length_3_ships < 0)
     {
-        return battleships[3][n];
+        return *battleships[3][n];
     }
     n -= length_3_ships;
     // std::cout << n << ' ' << length_3_ships << ' ' << n - length_3_ships << ' ' << (n - length_3_ships < 0) << '\n';
-    return battleships[4][n];
+    return *battleships[4][n];
 }
 
 ShipManager::ShipManager(int length_4_ships,int length_3_ships, int length_2_ships,int length_1_ships)
 {
-    battleships = std::vector(5, std::vector<Battleship>(0, Battleship()));
+    battleships = std::vector(5, std::vector<Battleship*>(0));
     this->length_4_ships = length_4_ships;
     this->length_3_ships = length_3_ships;
     this->length_2_ships = length_2_ships;
@@ -59,6 +59,17 @@ ShipManager::ShipManager(int length_4_ships,int length_3_ships, int length_2_shi
 
 Battleship &ShipManager::GetBattleship(BattleshipLength length,int num)
 {
-    Battleship &battleship_output = battleships[int(length)][num];
+    Battleship &battleship_output = *(battleships[int(length)][num]);
+    std::cout << "adress of battleship in shipmanager" << &battleship_output << '\n';
+    
     return battleship_output;
+}
+
+ShipManager::~ShipManager()
+{   
+    auto length = length_1_ships + length_2_ships + length_3_ships + length_4_ships;
+    for(size_t i = 0; i<length; i++)
+    {
+        delete &(*this)[i];
+    }
 }

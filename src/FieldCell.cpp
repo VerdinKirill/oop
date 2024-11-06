@@ -37,13 +37,13 @@ const FieldCellState FieldCell::GetFieldState()
 	return this->state;
 }
 
-void FieldCell::AttackCell()
+bool FieldCell::AttackCell()
 {
 	if (this->ship_cell)
 	{	
-		std::cout << "yo attack battleship" << '\n';
-		this->ship_cell->AttackBattleshipCell();
+		return(this->ship_cell->AttackBattleshipCell());
 	}
+	return false;
 }
 
 std::string FieldCell::to_string()

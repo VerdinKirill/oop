@@ -1,13 +1,18 @@
 #pragma once
+#include "Battleship.h"
+
+class Battleship;
 
 enum BattleshipCellState{Destroyed, Damaged, Unbroken};
 class BattleshipCell{
 	public:
-	BattleshipCell();
+	BattleshipCell(Battleship* battleship);
 	BattleshipCellState GetState();
 	void SetState(BattleshipCellState state);
-	void AttackBattleshipCell();
+	bool AttackBattleshipCell();
+	bool isBattleshipDestroyed();
 
 	private:
+	Battleship* battleship;
 	BattleshipCellState state;	
 };

@@ -1,11 +1,14 @@
 #pragma once
-#include "FieldCell.h"
-#include "Battleship.h"
 #include <cmath>
 #include <sstream>
 #include <iomanip>
 #include <optional>
+#include "FieldCell.h"
+#include "Battleship.h"
 #include "InfoHolders/SkillResultInfoHolder.h"
+
+#include "Exceptions/ShipNearAnotherException.h"
+#include "Exceptions/OutOfBondsException.h"
 
 
 class SkillResultInfoHolder;

@@ -31,5 +31,13 @@ add_executable(battleships_war
     src/InfoHolders/SkillInfoHolder.h
     src/InfoHolders/SkillInfoHolder.cpp
     src/InfoHolders/SkillResultInfoHolder.h
-    src/InfoHolders/SkillResultInfoHolder.cpp)
+    src/InfoHolders/SkillResultInfoHolder.cpp
+    src/skills/SkillManager.h
+    src/skills/SkillManager.cpp
+    src/Exceptions/NoneAvailableSkillsException.h
+    src/Exceptions/NoneAvailableSkillsException.cpp
+    src/Exceptions/OutOfBondsException.h
+    src/Exceptions/OutOfBondsException.cpp
+    src/Exceptions/ShipNearAnotherException.h
+    src/Exceptions/ShipNearAnotherException.cpp)
 

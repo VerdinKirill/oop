@@ -33,17 +33,12 @@ int main()
     auto pos = Pos{3, 3};
 
     auto skill_info = new SkillInfoHolder(&ship_manager, &field, &pos);
-    // auto skillfactory = new BombardmentFactory();
-    // skill = skillfactory->createSkill(skill_info);
-    // skill->use();
-    // std::cout << field;
     SkillManager skill_manager;
     for (size_t i = 0; skill_manager.size(); i++)
     {
         skill_manager.printAvailableSkills();
-        auto skillfactory = skill_manager.getSkill();
-        std::cout << skillfactory->getName() << '\n';
-        auto result = (skillfactory->createSkill(skill_info))->use();
+        auto skill = skill_manager.getSkill(*skill_info);
+        auto result = skill->use();
         // result.print();
         std::cout << field;
     }

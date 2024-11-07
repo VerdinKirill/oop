@@ -1,15 +1,18 @@
 #pragma once
 
+#include <iostream>
+#include <optional>
+#include <string>
 #include <queue>
-#include "Skill.h"
-#include "SkillFactory.h"
 #include "BombardmentFactory.h"
 #include "DoubleDamageFactory.h"
 #include "ScanerFactory.h"
+#include "Skill.h"
+#include "SkillFactory.h"
 #include "../InfoHolders/SkillResultInfoHolder.h"
-#include <optional>
-#include <iostream>
-#include <string>
+#include "../InfoHolders/SkillInfoHolder.h"
+
+#include "../Exceptions/NoneAvailableSkillsException.h"
 
 
 class SkillManager
@@ -19,7 +22,7 @@ class SkillManager
 	public:
 	SkillManager(std::optional<std::vector<SkillFactory*>> skill_factories= std::nullopt);
 	void update(SkillResultInfoHolder& skill_result);
-	SkillFactory* getSkill();
+	Skill* getSkill(SkillInfoHolder& skill_info);
 	void addSkill();
 	void printAvailableSkills();
 	int size();

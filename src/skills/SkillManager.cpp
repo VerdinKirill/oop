@@ -40,11 +40,14 @@ void SkillManager::printAvailableSkills()
 	}
 }
 
-SkillFactory* SkillManager::getSkill()
-{
+Skill* SkillManager::getSkill(SkillInfoHolder& skill_holder)
+{	
+	if (this->skill_factory_queue.empty())
+		throw NoneAvailableSkillsException();
+
 	auto output = this->skill_factory_queue.front();
 	this->skill_factory_queue.pop();
-	return output;
+	return output->createSkill(&skill_holder);
 }
 
 int SkillManager::size()

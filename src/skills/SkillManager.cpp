@@ -46,6 +46,7 @@ Skill* SkillManager::getSkill(SkillInfoHolder& skill_holder)
 		throw NoneAvailableSkillsException();
 
 	auto output = this->skill_factory_queue.front();
+	std::cout << "Current skill: "<<output->getName() << '\n';
 	this->skill_factory_queue.pop();
 	return output->createSkill(&skill_holder);
 }

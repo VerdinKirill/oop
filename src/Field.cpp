@@ -23,7 +23,7 @@ const bool Field::CheckPos(int x, int y)
 {
 	int field_width = this->GetWidth();
 	int field_heigth = this->GetHeight();
-	if (x >= field_width && x < 0 && y >= field_heigth && y < 0)
+	if (x >= field_width || x < 0 || y >= field_heigth || y < 0)
 		return false;
 	return true;
 }

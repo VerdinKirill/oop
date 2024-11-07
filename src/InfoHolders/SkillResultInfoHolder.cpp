@@ -38,9 +38,11 @@ bool SkillResultInfoHolder::get_is_battleship_destroyed()
 	return this->is_battleship_destroyed;
 }
 
-Pos& SkillResultInfoHolder::get_pos()
-{
-	return *(this->coords);
+Pos SkillResultInfoHolder::get_pos()
+{	
+	if (this->coords != nullptr)
+		return *(this->coords);
+	return {-1, -1};
 }
 
 int SkillResultInfoHolder::get_damage()
@@ -48,8 +50,18 @@ int SkillResultInfoHolder::get_damage()
 	return this->current_damage;
 }
 void SkillResultInfoHolder::print()
-{
-	std::cout << "damage:" << this->get_damage() << "\nisBattleship" << this->get_is_battleship_cell()
-    <<"\nPos" << this->get_pos().x << " " << this->get_pos().y;
+{	
+
+	std::cout << "damage:" << this->get_damage() << "\nisBattleship: " << this->get_is_battleship_cell()
+    <<"\nPos: ";
+	Pos pos;
+	if ((pos = this->get_pos()).x == -1)
+	{
+		std::cout << "None\n";
+	}
+	else
+	{
+		std::cout << pos.x << " " << pos.y << '\n';
+	}
 }
 

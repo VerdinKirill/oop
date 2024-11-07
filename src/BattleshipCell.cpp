@@ -28,6 +28,6 @@ bool BattleshipCell::AttackBattleshipCell()
 
 bool BattleshipCell::isBattleshipDestroyed()
 {	
-	std::cout <<"adress of battleship in battleshipcell: "<< battleship << '\n';
+	// std::cout <<"adress of battleship in battleshipcell: "<< battleship << '\n';
 	return battleship->isDestroyed();
 }

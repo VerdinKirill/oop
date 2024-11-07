@@ -21,7 +21,7 @@ class SkillResultInfoHolder: public InfoHolder {
 		void set_damage(int damage);
 		bool get_is_battleship_cell();
 		bool get_is_battleship_destroyed();
-		Pos& get_pos();
+		Pos get_pos();
 		int get_damage();
 		void print();
 };

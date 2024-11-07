@@ -16,14 +16,10 @@ SkillResultInfoHolder& Bombardment::use()
 	for (size_t i = 0; i < num_ships; i++)
 	{	
 		Battleship *battleship = &(*ship_manager)[i];
-		// std::cout << int(battleship->GetLength()) << '\n';
-	 	std:: cout << "battleship len"  <<  battleship->GetLength() <<" adress: " << battleship << '\n';
 		for (size_t j = 0; j < battleship->GetLength(); j++)
 		{	
 			BattleshipCell *n = &((*battleship)[j]);
-			std::cout << battleship << '\t' << &(*battleship) << '\n';
 			// n->AttackBattleshipCell();
-			std::cout<<"state:"<<n->GetState() << '\n';
 			cells.push_back(n);
 		}
 	}
@@ -35,7 +31,6 @@ SkillResultInfoHolder& Bombardment::use()
 		if (cells[random_index]->GetState() != BattleshipCellState::Destroyed)
 		{
 			cells[random_index]->AttackBattleshipCell();
-			std::cout << "random_index" << cells[random_index]->GetState() << '\n';
 
 			skill_result->set_is_battleship_cell(true);
 			skill_result->set_is_battleship_destroyed(cells[random_index]->isBattleshipDestroyed());

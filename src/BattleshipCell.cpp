@@ -17,11 +17,10 @@ void BattleshipCell::SetState(BattleshipCellState state)
 	this->state = state;
 }
 
-bool BattleshipCell::AttackBattleshipCell()
+bool BattleshipCell::AttackBattleshipCell(int damage = 1)
 {	
 	auto start_state = state;
-	state = ((state == BattleshipCellState::Unbroken) ? BattleshipCellState::Damaged : BattleshipCellState::Destroyed);
-	// std::cout << isBattleshipDestroyed() << '\n';
+	state = (state-damage > 0) ? state : BattleshipCellState::Destroyed;
 	return (start_state!= BattleshipCellState::Destroyed) ? isBattleshipDestroyed() : false;
 	// std::cout <<  int(state) << "you";
 }

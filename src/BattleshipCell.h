@@ -3,13 +3,13 @@
 
 class Battleship;
 
-enum BattleshipCellState{Destroyed, Damaged, Unbroken};
+enum BattleshipCellState : signed{Destroyed, Damaged, Unbroken};
 class BattleshipCell{
 	public:
 	BattleshipCell(Battleship* battleship);
 	BattleshipCellState GetState();
 	void SetState(BattleshipCellState state);
-	bool AttackBattleshipCell();
+	bool AttackBattleshipCell(int damage = 1);
 	bool isBattleshipDestroyed();
 
 	private:

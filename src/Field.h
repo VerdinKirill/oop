@@ -26,7 +26,7 @@ class Field{
 	void SetDoubleDamageFlag();
 	void SetBattleship(int x, int y, Battleship& battleship, Direction direction);
 	// void SetBattleship(char x, int y, std::shared_ptr<Battleship> battleship, Direction direction);
-	SkillResultInfoHolder& AttackCell(int x, int y, std::optional<SkillResultInfoHolder*> skill_result = std::nullopt);
+	bool AttackCell(int x, int y, int damage = 1);
 	int GetWidth();
 	int GetHeight();
 	std::vector<FieldCell>& operator[](int index);

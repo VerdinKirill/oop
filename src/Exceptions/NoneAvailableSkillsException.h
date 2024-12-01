@@ -1,5 +1,7 @@
-#pragma once
+// #pragma once
 
+#ifndef NONEAVAILABLESKILLEXCEPTIONS_H
+#define NONEAVAILABLESKILLEXCEPTIONS_H
 #include <exception>
 #include <string>
 
@@ -11,3 +13,5 @@ class NoneAvailableSkillsException: public std::exception {
 	NoneAvailableSkillsException();
 	const char* what() const noexcept override;
 };
+
+#endif

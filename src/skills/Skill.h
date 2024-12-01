@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SKILL_H
+#define SKILL_H
 #include "../InfoHolders/SkillResultInfoHolder.h"
 #include <string>
 
@@ -7,3 +8,5 @@ class Skill {
 	virtual SkillResultInfoHolder& use() = 0;
 	// virtual ~Skill();
 };
+
+#endif

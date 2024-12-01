@@ -1,9 +1,13 @@
-#pragma once
+#ifndef BATTLESHIP_H
+#define BATTLESHIP_H
+
 #include <vector>
 #include <memory>
 
 #include "BattleshipCell.h"
 class BattleshipCell;
+
+
 
 enum  BattleshipLength{Cell1 = 1, Cell2 = 2, Cell3 = 3, Cell4 = 4};
 enum Direction{Up, Right, Down, Left};
@@ -24,3 +28,5 @@ private:
 	Direction direction;
 	BattleshipLength length;
 };
+
+#endif

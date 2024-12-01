@@ -37,7 +37,7 @@ const FieldCellState FieldCell::GetFieldState()
 	return this->state;
 }
 
-bool FieldCell::AttackCell(int damage = 1)
+bool FieldCell::AttackCell(int damage)
 {
 	if (this->ship_cell)
 	{	

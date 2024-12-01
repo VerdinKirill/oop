@@ -76,18 +76,20 @@ std::vector<Pos> Field::GetPosesOfShip(Battleship &battleship, int x, int y)
 {
 	std::vector<Pos> positions;
 	Pos pos_tail = this->GetTailPos(x, y, battleship);
+	std::cout << pos_tail.x << " " << pos_tail.y << '\n';
 	int x_step = (x < pos_tail.x) ? 1 : (x == pos_tail.x) ? 0
 														  : -1;
 	int y_step = (y < pos_tail.y) ? 1 : (y == pos_tail.y) ? 0
 														  : -1;
+
 	int j = y;
 	int i = x;
-	while (j != pos_tail.y + y_step || i != pos_tail.x + x_step)
+	do
 	{
 		positions.push_back({i, j});
 		i += x_step;
 		j += y_step;
-	}
+	} while (j != pos_tail.y + y_step || i != pos_tail.x + x_step);
 	return positions;
 }
 
@@ -112,7 +114,7 @@ void Field::SetBattleship(int x, int y, Battleship &battleship, Direction direct
 	}
 }
 
-bool Field::AttackCell(int x, int y, int damage = 1)
+bool Field::AttackCell(int x, int y, int damage)
 {
 	if (!this->CheckPos(x, y))
 	{
@@ -234,4 +236,8 @@ void Field::OpenField()
 void Field::SetDoubleDamageFlag()
 {
 	this->double_damage_flag = true;
+}
+
+void Field::update()
+{
 }

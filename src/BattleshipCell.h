@@ -1,7 +1,10 @@
-#pragma once
+#ifndef BATTLESHIPCELL
+#define BATTLESHIPCELL
 #include "Battleship.h"
 
 class Battleship;
+
+
 
 enum BattleshipCellState : signed{Destroyed, Damaged, Unbroken};
 class BattleshipCell{
@@ -16,3 +19,5 @@ class BattleshipCell{
 	Battleship* battleship;
 	BattleshipCellState state;	
 };
+
+#endif

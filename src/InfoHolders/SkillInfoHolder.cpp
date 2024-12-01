@@ -1,6 +1,5 @@
 #include "SkillInfoHolder.h"
-
-SkillInfoHolder::SkillInfoHolder(std::optional<ShipManager*> ship_manager, std::optional<Field*> field , std::optional<Pos*> pos)
+SkillInfoHolder::SkillInfoHolder(std::optional<ShipManager*> ship_manager, std::optional<Field*> field, std::optional<CoordHolder> coords):coords(coords.value())
 {
 	if (ship_manager == std::nullopt)
 	{
@@ -18,14 +17,6 @@ SkillInfoHolder::SkillInfoHolder(std::optional<ShipManager*> ship_manager, std::
 	{
 		this->field = field.value();
 	}
-	if (pos == std::nullopt)
-	{
-		this->pos = Pos{0, 0};
-	}
-	else
-	{
-		this->pos = *pos.value();
-	}
 }
 
 ShipManager &SkillInfoHolder::getShipManager()
@@ -38,9 +29,9 @@ Field &SkillInfoHolder::getField()
 	return *(this->field);
 }
 
-Pos& SkillInfoHolder::getPos()
+CoordHolder& SkillInfoHolder::getCoords()
 {
-	return this->pos;
+	return this->coords;
 }
 
 
@@ -53,7 +44,7 @@ void SkillInfoHolder::setField(Field& field)
 	this->field = &field;
 	
 }
-void SkillInfoHolder::setPos(Pos& pos)
+void SkillInfoHolder::setCoords(CoordHolder& pos)
 {
-	this->pos = pos;
+	this->coords = pos;
 }

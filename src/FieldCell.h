@@ -1,8 +1,11 @@
-#pragma once
+#ifndef FIELDCELL_H
+#define FIELDCELL_H
+
 #include "BattleshipCell.h"
 #include <memory>
 #include <iostream>
 #include <string>
+
 
 enum FieldCellState{Unknown, Empty, Ship};
 class FieldCell{
@@ -26,3 +29,5 @@ class FieldCell{
 	BattleshipCell* ship_cell;
 	bool near_with_ship;
 };
+
+#endif

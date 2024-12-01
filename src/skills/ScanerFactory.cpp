@@ -4,11 +4,12 @@
 Skill *ScanerFactory::createSkill(SkillInfoHolder* skill_holder)
 {	
 	auto& field = skill_holder->getField();
-	auto& pos = skill_holder->getPos();
+	skill_holder->read();
+	auto pos = skill_holder->getCoords().getCoords();
 	return new Scaner(field, pos);
 }
 
-std::string ScanerFactory::getName()
+std::string ScanerFactory::accept(SkillVisitor* visitor)
 {
-	return "Scaner";
+	return visitor->visit(this);
 }

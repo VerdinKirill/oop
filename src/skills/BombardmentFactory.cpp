@@ -5,9 +5,9 @@ Skill *BombardmentFactory::createSkill(SkillInfoHolder* skill_holder)
 	return new Bombardment(skill_holder->getShipManager());
 }
 
-std::string BombardmentFactory::getName()
+std::string BombardmentFactory::accept(SkillVisitor* visitor)
 {
-	return "Bombardment";
+	return visitor->visit(this);
 }
 
 

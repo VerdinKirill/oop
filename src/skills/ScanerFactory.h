@@ -1,11 +1,17 @@
-#pragma once
-#include "SkillFactory.h"
+#ifndef SCANERFACTORY_H
+#define SCANERFACTORY_H
 #include "Scaner.h"
+#include "SkillFactory.h"
+
+class SKillVisitor;
 
 
 class ScanerFactory : public SkillFactory
 {	
 	public:
 	Skill *createSkill(SkillInfoHolder* skill_holder) override;
-	std::string getName() override;
+	std::string accept(SkillVisitor* visitor) override;
+
 };
+
+#endif

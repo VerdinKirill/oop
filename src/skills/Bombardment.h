@@ -1,6 +1,10 @@
-#pragma once
+#ifndef BOMBARDMENT_H
+#define BOMBARDMENT_H
+
 #include "Skill.h"
 #include "../ShipManager.h"
+
+
 
 
 class Bombardment : public Skill{
@@ -9,3 +13,5 @@ class Bombardment : public Skill{
 	Bombardment(ShipManager& ship_manager);
 	SkillResultInfoHolder& use() override;
 };
+
+#endif

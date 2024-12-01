@@ -1,8 +1,13 @@
-#pragma once
+#ifndef SKILLINFOHOLDER_H
+#define SKILLINFOHOLDER_H
+
 #include "InfoHolder.h"
 #include "../Field.h"
+#include "coordHolder.h"
 #include "../ShipManager.h"
 #include <optional>
+
+
 
 class Field;
 class Shipmanager;
@@ -11,14 +16,16 @@ class Shipmanager;
 class SkillInfoHolder: public InfoHolder{
 	ShipManager* ship_manager;
 	Field* field;
-	Pos pos;
+	CoordHolder& coords;
 	public:
-		SkillInfoHolder(std::optional<ShipManager*> ship_manager = std::nullopt, std::optional<Field*> field = std::nullopt, std::optional<Pos*> pos = std::nullopt);
+		SkillInfoHolder(std::optional<ShipManager*> ship_manager = std::nullopt, std::optional<Field*> field = std::nullopt, std::optional<CoordHolder> coords = std::nullopt);
 		void read() override{};
 		ShipManager& getShipManager();
 		Field& getField();
-		Pos& getPos();
+		CoordHolder& getCoords();
 		void setShipManager(ShipManager& ship_manager);
 		void setField(Field& field);
-		void setPos(Pos& pos);
+		void setCoords(CoordHolder& coords);
 };
+
+#endif

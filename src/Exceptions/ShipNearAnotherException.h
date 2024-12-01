@@ -1,6 +1,10 @@
-#pragma once
+#ifndef SHIPNEARANOTHEREXCEPTION_H
+#define SHIPNEARANOTHEREXCEPTION_H
+// #pragma once
 #include <exception>
 #include <string>
+
+
 
 class ShipNearAnotherException: public std::exception {
 	
@@ -10,3 +14,5 @@ class ShipNearAnotherException: public std::exception {
 	ShipNearAnotherException();
 	const char* what() const noexcept override;
 };
+
+#endif

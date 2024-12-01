@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FIELD_H
+#define FIELD_H
 #include <cmath>
 #include <sstream>
 #include <iomanip>
@@ -12,6 +13,8 @@
 
 
 class SkillResultInfoHolder;
+
+
 struct Pos{
 	int x;
 	int y;
@@ -32,6 +35,7 @@ class Field{
 	std::vector<FieldCell>& operator[](int index);
 	std::string to_string();
 	friend std::ostream &operator<<(std::ostream& os, Field& field);
+	void update();
 
 	
 	private:
@@ -47,3 +51,5 @@ class Field{
 	void SetShipNear(int x, int y);
 	std::vector<Pos> GetPosesOfShip(Battleship& Battleship, int x, int y);
 };
+
+#endif

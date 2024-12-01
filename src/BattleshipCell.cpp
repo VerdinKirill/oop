@@ -17,7 +17,7 @@ void BattleshipCell::SetState(BattleshipCellState state)
 	this->state = state;
 }
 
-bool BattleshipCell::AttackBattleshipCell(int damage = 1)
+bool BattleshipCell::AttackBattleshipCell(int damage)
 {	
 	auto start_state = state;
 	state = (state-damage > 0) ? state : BattleshipCellState::Destroyed;

@@ -30,15 +30,11 @@ void SkillManager::update(SkillResultInfoHolder& skill_result)
 	}
 }
 
-void SkillManager::printAvailableSkills()
+SkillFactory* SkillManager :: operator[](int n)
 {
-	auto queue(this->skill_factory_queue);
-	std::cout << "available skills:\n";
-	for(; !queue.empty(); queue.pop())
-	{
-		std::cout << queue.front()->getName() << '\n';
-	}
+	return this->pull_of_skills[n];
 }
+
 
 Skill* SkillManager::getSkill(SkillInfoHolder& skill_holder)
 {	
@@ -46,9 +42,10 @@ Skill* SkillManager::getSkill(SkillInfoHolder& skill_holder)
 		throw NoneAvailableSkillsException();
 
 	auto output = this->skill_factory_queue.front();
-	std::cout << "Current skill: "<<output->getName() << '\n';
+	// std::cout << "Current skill: "<<output->getName() << '\n';
 	this->skill_factory_queue.pop();
-	return output->createSkill(&skill_holder);
+	auto skill = output->createSkill(&skill_holder);
+	return skill;
 }
 
 int SkillManager::size()

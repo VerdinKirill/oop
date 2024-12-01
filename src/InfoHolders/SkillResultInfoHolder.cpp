@@ -3,7 +3,7 @@
 SkillResultInfoHolder::SkillResultInfoHolder()
 {
 	this->is_battleship_cell = false;
-	this->coords = nullptr;
+	this->coords = {-1, -1};
 	this->is_battleship_destroyed = false;
 	this->current_damage = 1;
 }
@@ -18,9 +18,9 @@ void SkillResultInfoHolder::set_is_battleship_destroyed(bool is_destroyed)
 	this->is_battleship_destroyed = is_destroyed;
 }
 
-void SkillResultInfoHolder::set_pos(Pos& pos)
+void SkillResultInfoHolder::set_pos(std::pair<int, int>pos)
 {
-	this->coords = &pos;
+	this->coords = pos;
 }
 
 void SkillResultInfoHolder::set_damage(int damage)
@@ -38,10 +38,10 @@ bool SkillResultInfoHolder::get_is_battleship_destroyed()
 	return this->is_battleship_destroyed;
 }
 
-Pos SkillResultInfoHolder::get_pos()
+std::pair<int, int> SkillResultInfoHolder::get_pos()
 {	
-	if (this->coords != nullptr)
-		return *(this->coords);
+	if (this->coords.first != -1 || this->coords.second!=-1)
+		return this->coords;
 	return {-1, -1};
 }
 
@@ -54,14 +54,14 @@ void SkillResultInfoHolder::print()
 
 	std::cout << "damage:" << this->get_damage() << "\nisBattleship: " << this->get_is_battleship_cell()
     <<"\nPos: ";
-	Pos pos;
-	if ((pos = this->get_pos()).x == -1)
+	std::pair<int, int> pos;
+	if ((pos = this->get_pos()).first == -1)
 	{
 		std::cout << "None\n";
 	}
 	else
 	{
-		std::cout << pos.x << " " << pos.y << '\n';
+		std::cout << pos.first << " " << pos.second << '\n';
 	}
 }
 

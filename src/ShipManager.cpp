@@ -73,3 +73,13 @@ ShipManager::~ShipManager()
         delete &(*this)[i];
     }
 }
+
+bool ShipManager::isDefeated()
+{
+    for (int i = 0; i < this->GetNumberBattleships(); i++)
+    {
+        if (!this->operator[](i).isDestroyed())
+            return false;
+    }
+    return true;
+}

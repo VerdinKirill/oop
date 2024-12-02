@@ -7,7 +7,7 @@
 #include <string>
 
 
-enum FieldCellState{Unknown, Empty, Ship};
+enum FieldCellState{Unknown, Empty, Ship2, Ship1, Ship0};
 class FieldCell{
 	public:
 	FieldCell();
@@ -23,8 +23,12 @@ class FieldCell{
 	std::string to_string();
 	void SetNearWithShip();
 	bool IsNearWithShip();
+	int getIdBattleship();
+	void setIdBattleship(int id);
+	bool isHeadBattleship();
 	
 	private:
+	int battleshipId;
 	FieldCellState state;
 	BattleshipCell* ship_cell;
 	bool near_with_ship;

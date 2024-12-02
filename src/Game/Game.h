@@ -17,9 +17,11 @@ class Game
 {	
 	public: 
 	// Game(int width, int height, int numberOfShips, std::vector<int> shipSizes);
-	virtual GameState& getGameState() = 0;
+	virtual GameState getGameState() = 0;
 	virtual void placeShips() = 0;
 	virtual void process() = 0;
+	virtual void load(std::string fileName) = 0;
+	virtual void save(std::string fileName) = 0;
 	// virtual void move(int x, int y, bool isUseAbility) = 0;
 	// virtual void placeShip(int index, int x, int y, Direction direction) = 0;
 	// virtual void placeEnemyShips(int length, std::vector<int> sizes) = 0;

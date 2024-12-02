@@ -6,12 +6,13 @@
 #include "../Players/User.h"
 #include "../Players/Bot.h"
 #include "../Players/Player.h"
+#include <string>
 // #include "GameState.h"
 
 class PvEGame : public Game {
 
-	User* user;
-	Bot* bot;
+	std::unique_ptr<User> user;
+	std::unique_ptr<Bot> bot;
 	Player* currentPlayer;
 	Player* currentEnemy;
 	GameState* state;
@@ -24,13 +25,19 @@ class PvEGame : public Game {
 	void start () override;
 	void placeShips() override;
 	void process() override;
+	void load(std::string fileName)override;
+	void save(std::string fileName) override;
+	void setBot(Bot* bot);
+	void setUser(User* user);
+
+
 
 	// void placeShip (int index, int x, int y, Direction direction) override;
 	// void placeEnemyShips(int length, std::vector<int> sizes) override;
 	// void saveGame(std::string name) override;
 	// void loadGame(std::string name) override;
 
-	GameState& getGameState() override;
+	GameState getGameState() override;
 };
 
 #endif

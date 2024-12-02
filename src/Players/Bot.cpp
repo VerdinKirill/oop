@@ -5,29 +5,13 @@ Bot::Bot(int width, int height, int numShips4, int numShips3, int numShips2, int
 	this->field = new Field(width, height);
 	this->shipManager = new ShipManager(numShips4, numShips3, numShips2, numShips1);
 	this->damage = 1;
-	for (int x = 0; x < width; x++)
-	{
-		for (int y = 0; y < height; y++)
-		{
-			this->availableMoves.push_back({x, y});
-		}
-	}
+}
+Bot::~Bot()
+{
+	delete this->field;
+	delete this->shipManager;
 }
 
-Bot::Bot(Bot& bot)
-{	
-	delete this->field;
-	auto oldField = this->field;
-	this->field = new Field(bot.field->GetWidth(), bot.field->GetHeight());
-	delete oldField;
-	auto sm = bot.getShipManager();
-	this->shipManager = new ShipManager(0, 0, 0, 0);
-	for (int i = 0; i<sm.GetNumberBattleships(); i++)
-	{
-		this->shipManager->CreateBattleships(sm[i].GetLength(), 1);
-	}
-	delete &sm;
-}
 
 void Bot::placeShips()
 {
@@ -47,14 +31,16 @@ void Bot::placeShips()
 	}
 }
 
-void Bot::move(Player &player)
+Action Bot::move(Player &player)
 {	
-	auto rand = Randomizer(0, this->availableMoves.size());
+	auto rand = Randomizer(1,this->field->GetHeight());
+	int y = rand.getRandomInt();
+	rand = Randomizer(1, this->field->GetWidth());
+	int x = rand.getRandomInt();
 	auto field = player.getField();
 	int n = rand.getRandomInt();
-	auto pos = this->availableMoves[n];
-	field.AttackCell(pos.first, pos.second, this->damage);
-	this->availableMoves.erase(this->availableMoves.cbegin() + n);
+	field.AttackCell(x, y, this->damage);
+	return Action::Attack;
 }
 
 Field& Bot::getField()
@@ -67,6 +53,15 @@ ShipManager& Bot::getShipManager()
 	return *this->shipManager;
 }
 
+void Bot::setShipManager(ShipManager& sm)
+{
+	this->shipManager = &sm;
+}
+
+void Bot::setField(Field& f)
+{
+	this->field = &f;
+}
 
 
 //  User::useSkill(Player& player)

@@ -2,7 +2,7 @@
 
 NoneAvailableSkillsException::NoneAvailableSkillsException()
 {
-	message = "You tried to get skill, but you have not available skills!";
+	message = "You tried to get skill, but you have not available skills!\n";
 }
 
 const char* NoneAvailableSkillsException::what() const noexcept

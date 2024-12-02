@@ -26,9 +26,10 @@ class SkillManager
 
 	void update(SkillResultInfoHolder& skill_result);
 	Skill* getSkill(SkillInfoHolder& skill_info);
-	void addSkill();
+	void addSkill(std::optional<SkillFactory*> skill = std::nullopt);
 	void printAvailableSkills();
 	int size();
+	void pop();
 };
 
 #endif

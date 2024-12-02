@@ -5,7 +5,7 @@
 #include "../Exceptions/UnknownCommandException.h"
 
 
-enum Command{quit, attack, skill, load};
+enum Command{save, attack, skill, load};
 
 class CommandReader {
 	public:

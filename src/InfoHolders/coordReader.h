@@ -2,6 +2,8 @@
 #define COORDREADER_H
 
 #include <iostream>
+#include <exception>
+#include "../Exceptions/ReaderException.h"
 
 
 

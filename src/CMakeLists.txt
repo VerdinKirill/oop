@@ -71,7 +71,16 @@ add_executable(battleships_war
     Game/GameState.h
     Game/PvEGame.cpp
     Game/PvEGame.h
+    libraries/json.hpp
+    FileWork/FileWrapper.h
+    FileWork/FileWrapper.cpp
+    FileWork/Serialization.h
+    FileWork/Serialization.cpp
+    FileWork/Deserialization.cpp
+    FileWork/Deserialization.cpp
 
+    Exceptions/UnableOpenFileException.h
+    Exceptions/UnableOpenFileException.cpp
     )
 
 

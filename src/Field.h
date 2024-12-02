@@ -22,9 +22,12 @@ struct Pos{
 
 class Field{
 	public:
+	Field(): height(0), width(0) {};
 	Field(int width, int heigth);
 	Field(const Field& other_field);
 	Field& operator=(const Field& other_field);
+	Field(Field&& other);
+    Field& operator=(Field&& other);
 	void OpenField();
 	void SetDoubleDamageFlag();
 	void SetBattleship(int x, int y, Battleship& battleship, Direction direction);

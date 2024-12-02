@@ -19,8 +19,10 @@ private:
 	int damage;
 
 public:
+	int getDamage();
 	User(int width, int height, int numShips4, int numShips3, int numShips2, int numShips1);
-	void move(Player &player) override;
+	~User();
+	Action move(Player &player) override;
 	void placeShips() override;
 
 	bool attack(Player &player, int x, int y);
@@ -29,6 +31,10 @@ public:
 	Field& getField() override;
 	ShipManager& getShipManager() override;
 	SkillManager& getSkillManager();
+	void setShipManager(ShipManager& sm);
+	void setField(Field& f);
+	void setSkillManager(SkillManager& sm);
+
 
 };
 

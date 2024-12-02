@@ -19,6 +19,22 @@ Pos Field::GetTailPos(int x, int y, Battleship &battleship)
 	return {x_tail, y_tail};
 }
 
+Field::Field(Field&& other) : width(other.width), height(other.height), field(std::move(other.field)){
+    other.width = 0;
+    other.height = 0;
+    other.field.clear();
+}
+
+Field& Field::operator=(Field&& other) {
+    if (this != &other) {
+        width = other.width;
+        height = other.height;
+        field = std::move(other.field);
+        other.width = 0;
+        other.height = 0;
+    }
+    return *this;
+}
 const bool Field::CheckPos(int x, int y)
 {
 	int field_width = this->GetWidth();
@@ -129,7 +145,7 @@ bool Field::AttackCell(int x, int y, int damage)
 	int curentDamage = 1;
 
 	isDestroyed = cell->AttackCell(damage);
-	return damage;
+	return isDestroyed;
 }
 
 std::vector<FieldCell> &Field::operator[](int index)

@@ -1,11 +1,12 @@
 #include "ShipManager.h"
 #include <iostream>
 
-void ShipManager::CreateBattleships(BattleshipLength length,int num)
+void ShipManager::CreateBattleships(BattleshipLength length, int num)
 {
     for (size_t i = 0; i < num; i++)
-    {   
-        auto battleship = new Battleship(length);
+    {
+        auto number = this->GetNumberBattleships();
+        auto battleship = new Battleship(length, Direction::Up, length*100 + i);
         battleships[int(length)].push_back(battleship);
     }
 }
@@ -44,9 +45,9 @@ Battleship &ShipManager::operator[](int n)
     return *battleships[4][n];
 }
 
-ShipManager::ShipManager(int length_4_ships,int length_3_ships, int length_2_ships,int length_1_ships)
+ShipManager::ShipManager(int length_4_ships, int length_3_ships, int length_2_ships, int length_1_ships)
 {
-    battleships = std::vector(5, std::vector<Battleship*>(0));
+    battleships = std::vector(5, std::vector<Battleship *>(0));
     this->length_4_ships = length_4_ships;
     this->length_3_ships = length_3_ships;
     this->length_2_ships = length_2_ships;
@@ -57,22 +58,22 @@ ShipManager::ShipManager(int length_4_ships,int length_3_ships, int length_2_shi
     CreateBattleships(BattleshipLength::Cell1, length_1_ships);
 }
 
-Battleship &ShipManager::GetBattleship(BattleshipLength length,int num)
+Battleship &ShipManager::GetBattleship(BattleshipLength length, int num)
 {
     Battleship &battleship_output = *(battleships[int(length)][num]);
     // std::cout << "adress of battleship in shipmanager" << &battleship_output << '\n';
-    
+
     return battleship_output;
 }
 
-ShipManager::~ShipManager()
-{   
-    auto length = length_1_ships + length_2_ships + length_3_ships + length_4_ships;
-    for(size_t i = 0; i<length; i++)
-    {
-        delete &(*this)[i];
-    }
-}
+// ShipManager::~ShipManager()
+// {
+//     auto length = length_1_ships + length_2_ships + length_3_ships + length_4_ships;
+//     for (size_t i = 0; i < length; i++)
+//     {
+//         delete &(*this)[i];
+//     }
+// }
 
 bool ShipManager::isDefeated()
 {
@@ -82,4 +83,35 @@ bool ShipManager::isDefeated()
             return false;
     }
     return true;
+}
+
+int ShipManager::getNum4Length()
+{
+    return this->length_4_ships;
+}
+int ShipManager::getNum3Length()
+{
+    return this->length_3_ships;
+}
+
+int ShipManager::getNum2Length()
+{
+    return this->length_2_ships;
+}
+
+int ShipManager::getNum1Length()
+{
+    return this->length_1_ships;
+}
+
+Battleship&ShipManager::getBattleshipById(int id)
+{
+    for (int i; i < this->GetNumberBattleships(); i++)
+    {
+        auto& bs = this->operator[](i);
+        if (bs.getId() == id)
+        {
+            return bs;
+        }
+    }
 }

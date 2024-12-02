@@ -5,6 +5,8 @@
 #include "../Field.h"
 #include "../ShipManager.h"
 
+enum Action {Attack, Save, Load};
+
 class Player
 {
 
@@ -12,7 +14,7 @@ public:
 	// virtual bool attack(Player& player, int x, int y) = 0;
 
 
-	virtual void move(Player& player) = 0;
+	virtual Action move(Player& player) = 0;
 
 	virtual void placeShips() = 0;
 	// virtual void useSkill() = 0;

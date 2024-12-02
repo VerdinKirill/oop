@@ -3,7 +3,7 @@
 #include "Scaner.h"
 #include "SkillFactory.h"
 
-class SKillVisitor;
+class SkillVisitor;
 
 
 class ScanerFactory : public SkillFactory

@@ -17,10 +17,13 @@ class Bot : public Player {
 
 	public:
 	Bot (int width, int height, int numShips4, int numShips3, int numShips2, int numShips1);
-	Bot(Bot& bot);
-	void move(Player& player) override;
+	Bot(Bot* bot);
+	~Bot();
+	Action move(Player& player) override;
 	Field& getField() override;
 	void placeShips() override;
+	void setField(Field& f);
+	void setShipManager(ShipManager& sm);
 	ShipManager& getShipManager() override;
 	// bool attack(Player& player, int x, int y);
 

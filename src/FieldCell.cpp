@@ -25,8 +25,13 @@ void FieldCell::SetFieldCellState(FieldCellState state)
 void FieldCell::OpenCellState()
 {
 	if (this->ship_cell)
-	{
-		this->SetFieldCellState(FieldCellState::Ship);
+	{	
+		if (ship_cell->GetState() == BattleshipCellState::Unbroken)
+			this->SetFieldCellState(FieldCellState::Ship2);
+		if (ship_cell->GetState() == BattleshipCellState::Damaged)
+			this->SetFieldCellState(FieldCellState::Ship1);
+		if (ship_cell->GetState() == BattleshipCellState::Destroyed)
+			this->SetFieldCellState(FieldCellState::Ship0);
 	}
 	else
 		this->SetFieldCellState(FieldCellState::Empty);
@@ -41,9 +46,25 @@ bool FieldCell::AttackCell(int damage)
 {
 	if (this->ship_cell)
 	{	
-		return(this->ship_cell->AttackBattleshipCell(damage));
+		auto result = this->ship_cell->AttackBattleshipCell(damage);
+		this->OpenCellState();
+		return result;
 	}
 	return false;
+}
+
+int FieldCell::getIdBattleship()
+{
+	if (this->isBattleshipCell())
+	{
+		return this->ship_cell->getBattleshipId();
+	}
+	return -1;
+}
+
+void FieldCell::setIdBattleship(int id)
+{
+	this->battleshipId = id;
 }
 
 std::string FieldCell::to_string()
@@ -55,17 +76,17 @@ std::string FieldCell::to_string()
 	}
 	else if (state == FieldCellState::Empty)
 		value = "🌀";
-	else if (state == FieldCellState::Ship)
+	else if (state == FieldCellState::Ship2)
 	{
-		auto state = ship_cell->GetState();
-		if (state == BattleshipCellState::Destroyed)
-		{
-			value = "🟥";
-		}
-		else if (state == BattleshipCellState::Damaged)
-			value = "🟨";
-		else
-			value = "🟩";
+		value = "🟩";
+	}
+	else if (state == FieldCellState::Ship1)
+	{
+		value = "🟨";
+	}
+	else 
+	{
+		value = "🟥";
 	}
 	return value;
 }
@@ -92,4 +113,11 @@ bool FieldCell::isBattleshipCell()
 	if (ship_cell == nullptr)
 		return false;
 	return true;
+}
+
+bool FieldCell::isHeadBattleship()
+{
+	if (this->isBattleshipCell())
+		return this->ship_cell->getIsHead();
+	return false;
 }

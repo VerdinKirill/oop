@@ -1,9 +1,9 @@
 #include "PvEGame.h"
 
-PvEGame::PvEGame() {
-	this->countMoves = 0;
+PvEGame::PvEGame()
+{
+	this->countMoves = 1;
 	this->countRounds = 1;
-
 }
 
 void PvEGame::start()
@@ -20,9 +20,8 @@ void PvEGame::start()
 		std::cin >> length;
 		lengths.push_back(length);
 	}
-	this->bot = new Bot(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
-	this->user = new User(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
-	this->state = new GameState(*(this->bot), *this->user, this->countRounds, this->countMoves);
+	this->bot = std::make_unique<Bot>(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
+	this->user = std::make_unique<User>(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
 	this->placeShips();
 	this->process();
 }
@@ -34,33 +33,102 @@ void PvEGame::placeShips()
 }
 
 void PvEGame::process()
-{	
+{
+	std::string filename = "/Users/kirillverdin/programming/oop/File.json";
+	std::cout << "kapec\n";
 	while (!this->user->getShipManager().isDefeated())
 	{
-		countMoves++;
-		if (countMoves%2)
+		std::cout << countMoves << " move\n";
+		auto state = this->getGameState();
+		std::cout << state;
+		if (countMoves % 2)
 		{
-			this->currentPlayer = this->user;
-			this->currentEnemy = this->bot;
+			this->currentPlayer = user.get();
+			this->currentEnemy = bot.get();
 		}
 		else
 		{
-			this->currentPlayer = this->bot;
-			this->currentEnemy = this->user;
+			this->currentPlayer = bot.get();
+			this->currentEnemy = user.get();
 		}
-		this->currentPlayer->move(*(this->currentEnemy));
+
+		try
+		{
+			auto action = this->currentPlayer->move(*(this->currentEnemy));
+			if (action == Action::Save)
+			{
+				this->save(filename);
+				continue;
+			}
+			if (action == Action::Load)
+			{
+				this->load(filename);
+				auto state = this->getGameState();
+				std::cout << state;
+				std::cout << "loaded";
+				continue;
+			}
+		}
+		catch (std::exception &error)
+		{
+			countMoves--;
+			std::cout << error.what();
+		}
 		if (this->bot->getShipManager().isDefeated())
-		this->bot = new Bot(*bot);
-		std::cout << *state;
+		{
+			auto field = this->bot->getField();
+			auto sm = this->bot->getShipManager();
+			this->bot = std::make_unique<Bot>(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
+			this->bot->placeShips();
+			std::cout << "yo\n";
+			this->countRounds++;
+		}
+		countMoves++;
 	}
-	std::cout << "you lose:(\n" ;
+	std::cout << "you lose:(\n";
 }
 
-GameState& PvEGame:: getGameState()
+GameState PvEGame::getGameState()
 {
-	return *(this->state);
+	return GameState(this->bot.get(), this->user.get(), this->countRounds, this->countMoves);
 }
 
+void PvEGame::load(std::string filename)
+{	
+	auto state = this->getGameState();
+	try
+	{
+		state.loadGame(filename);
+	}
+	catch (nlohmann::json::exception &e)
+	{
+		std::cerr << "Error parsing JSON: " << e.what() << std::endl;
+		return;
+	}
+	// this->bot = std::make_unique<Bot>(state.getBot());
+	// this->user = std::make_unique<User>(state.getUser());
+	// std::cout << "ya user\n";
+
+	// this->countMoves = state.getMoves();
+	// this->countRounds = state.getRounds();
+	// std::cout << "uoflskdakdpakd;ojfdajkf\n";
+	// if (countMoves % 2)
+	// {
+	// 	this->currentPlayer = user.get();
+	// 	this->currentEnemy = bot.get();
+	// }
+	// else
+	// {
+	// 	this->currentPlayer = bot.get();
+	// 	this->currentEnemy = user.get();
+	// }
+}
+
+void PvEGame::save(std::string filename)
+{
+	auto state = this->getGameState();
+	state.saveGame(filename);
+}
 // void PvEGame::move(int x, int y, bool isUseAbility)
 // {
 // 	if (isUseAbility)
@@ -95,7 +163,6 @@ GameState& PvEGame:: getGameState()
 // GameState& PvEGame::getGameState(){
 // 	return *state;
 // }
-
 
 // SkillManager& PvEGame::getSkillManager()
 // {

@@ -15,15 +15,17 @@ enum Direction{Up, Right, Down, Left};
 class Battleship
 {
 public:
-	Battleship(BattleshipLength length =  BattleshipLength::Cell1, Direction direction = Direction::Up);
+	Battleship(BattleshipLength length, Direction direction, int id);
 	void SetDirection(Direction direcrion);
 	Direction GetDirection();
 	BattleshipLength GetLength();
 	BattleshipCell& operator[](unsigned int index);
 	bool isDestroyed();
+	int getId();
 	
 
 private:
+	int id;
 	std::vector<BattleshipCell> battleship;
 	Direction direction;
 	BattleshipLength length;

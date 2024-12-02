@@ -2,18 +2,13 @@
 
 Bot &GameState::getBot()
 {
-	return *this->bot;
+	return this->bot;
 }
 
-void GameState::setGameComponents(std::unique_ptr<Bot> newBot, std::unique_ptr<User> newUser)
-{
-	bot = std::move(newBot);
-	user = std::move(newUser);
-}
 
 User &GameState::getUser()
 {
-	return *this->user;
+	return this->user;
 }
 
 int GameState::getRounds()
@@ -128,13 +123,12 @@ FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state)
 	connectShipManagerField(enemyShipManager, enemyField);
 
 	// std::cout << field.GetWidth() << " " << field.GetHeight() << "width and height of loaded field\n";
+	state.getUser().getShipManager() = shipManager;
+	state.getUser().getSkillManager() = skillManager;
+	state.getUser().getField() = field;
 
-	state.getUser().setShipManager(shipManager);
-	state.getUser().setField(field);
-	state.getUser().setSkillManager(skillManager);
-
-	state.getBot().setShipManager(enemyShipManager);
-	state.getBot().setField(enemyField);
+	state.getBot().getShipManager() = enemyShipManager;
+	state.getBot().getField() = enemyField;
 
 	return fileWrapper;
 }
@@ -152,4 +146,24 @@ GameState &GameState::loadGame(const std::string fileName)
 	fileWrapper >> *this;
 	return *this;
 	std::cout << "IM HEAR\n";
+}
+
+void GameState::setBot(Bot& bot)
+{
+	this->bot = bot;
+}
+
+void GameState::setMoves(int& moves)
+{
+	this->countMoves = moves;
+}
+
+void GameState::setRounds(int& rounds)
+{
+	this->countRounds = rounds;
+}
+
+void GameState::setUser(User& user)
+{
+	this->user = user;
 }

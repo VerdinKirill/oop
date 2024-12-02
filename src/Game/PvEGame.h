@@ -7,20 +7,20 @@
 #include "../Players/Bot.h"
 #include "../Players/Player.h"
 #include <string>
-// #include "GameState.h"
+#include "GameState.h"
 
 class PvEGame : public Game {
 
-	std::unique_ptr<User> user;
-	std::unique_ptr<Bot> bot;
+	User user;
+	Bot bot;
+	GameState state;
 	Player* currentPlayer;
 	Player* currentEnemy;
-	GameState* state;
 	int countMoves;
 	int countRounds;
 
 	public:
-	PvEGame();
+	PvEGame(GameState& state);
 	// PvEGame(int width, int height, int numLength4, int numLength3, int numLength2, int numLength1);
 	void start () override;
 	void placeShips() override;

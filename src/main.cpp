@@ -15,7 +15,13 @@ int main()
 ██   ██ ██   ██    ██       ██    ██      ██           ██ ██   ██ ██ ██          ██ ███ ██ ██   ██ ██   ██ 
 ██████  ██   ██    ██       ██    ███████ ███████ ███████ ██   ██ ██ ██           ███ ███  ██   ██ ██   ██ )" << "\n\n";
 
-    Game* gm = new PvEGame();
+    int countr = 0;
+    int countm = 0;
+    auto user = User();
+    auto bot = Bot();
+    auto state = GameState(user, bot, countr, countm);
+
+    Game* gm = new PvEGame(state);
     gm->start();
     return 0;
 }

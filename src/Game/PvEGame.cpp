@@ -1,9 +1,11 @@
 #include "PvEGame.h"
 
-PvEGame::PvEGame()
+PvEGame::PvEGame(GameState& gameState):state(gameState)
 {
 	this->countMoves = 1;
 	this->countRounds = 1;
+	state.setMoves(this->countMoves);
+	state.setRounds(this->countRounds);
 }
 
 void PvEGame::start()
@@ -20,36 +22,42 @@ void PvEGame::start()
 		std::cin >> length;
 		lengths.push_back(length);
 	}
-	this->bot = std::make_unique<Bot>(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
-	this->user = std::make_unique<User>(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
+	this->bot = Bot(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
+	this->user = User(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
+	std::cout << "ya tut";
+	this->state.setBot(bot);
+	std::cout << "ya tut";
+	this->state.setUser(user);
+	std::cout << "ya tut";
 	this->placeShips();
 	this->process();
 }
 
 void PvEGame::placeShips()
 {
-	this->bot->placeShips();
-	this->user->placeShips();
+	this->bot.placeShips();
+	this->user.placeShips();
 }
 
 void PvEGame::process()
 {
 	std::string filename = "/Users/kirillverdin/programming/oop/File.json";
 	std::cout << "kapec\n";
-	while (!this->user->getShipManager().isDefeated())
+	std::cout << this->user.getDamage();
+	while (!this->user.getShipManager().isDefeated())
 	{
 		std::cout << countMoves << " move\n";
 		auto state = this->getGameState();
 		std::cout << state;
 		if (countMoves % 2)
 		{
-			this->currentPlayer = user.get();
-			this->currentEnemy = bot.get();
+			this->currentPlayer = &user;
+			this->currentEnemy = &bot;
 		}
 		else
 		{
-			this->currentPlayer = bot.get();
-			this->currentEnemy = user.get();
+			this->currentPlayer = &bot;
+			this->currentEnemy = &user;
 		}
 
 		try
@@ -74,12 +82,14 @@ void PvEGame::process()
 			countMoves--;
 			std::cout << error.what();
 		}
-		if (this->bot->getShipManager().isDefeated())
+		if (this->bot.getShipManager().isDefeated())
 		{
-			auto field = this->bot->getField();
-			auto sm = this->bot->getShipManager();
-			this->bot = std::make_unique<Bot>(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
-			this->bot->placeShips();
+			auto field = this->bot.getField();
+			auto sm = this->bot.getShipManager();
+			this->bot = Bot(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
+			this->state.setBot(this->bot);
+			// this->bot = std::make_unique<Bot>(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
+			this->bot.placeShips();
 			std::cout << "yo\n";
 			this->countRounds++;
 		}
@@ -90,7 +100,7 @@ void PvEGame::process()
 
 GameState PvEGame::getGameState()
 {
-	return GameState(this->bot.get(), this->user.get(), this->countRounds, this->countMoves);
+	return this->state;
 }
 
 void PvEGame::load(std::string filename)

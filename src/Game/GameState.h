@@ -14,19 +14,21 @@ class User;
 
 class GameState
 {
-	std::unique_ptr<Bot> bot;
-	std::unique_ptr<User> user;
+	Bot& bot;
+	User& user;
 	int &countRounds;
 	int &countMoves;
 
 public:
-	GameState(std::unique_ptr<Bot> bot, std::unique_ptr<User> user, int &countRounds, int &countMoves)
-		: bot(std::move(bot)), user(std::move(user)), countRounds(countRounds), countMoves(countMoves) {}
+	GameState(User& user, Bot& bot, int& countRounds, int& countMoves) :user(user), bot(bot), countRounds(countRounds), countMoves(countMoves){};
 	Bot &getBot();
 	User &getUser();
 	int getRounds();
 	int getMoves();
 	void setBot(Bot &bot);
+	void setUser(User& user);
+	void setMoves(int& moves);
+	void setRounds(int& rounds);
 	void setGameComponents(std::unique_ptr<Bot> newBot, std::unique_ptr<User> newUser);
 	friend std::ostream &operator<<(std::ostream &os, GameState &game);
 	friend FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state);

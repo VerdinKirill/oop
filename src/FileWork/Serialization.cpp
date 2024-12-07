@@ -19,7 +19,9 @@ void Serialization::to_json(ShipManager& shipManager, std::string key) {
             jsm[key]["segments"].push_back({
                 {"State", tempcell.GetState()},
 				{"idBattleship", tempcell.getBattleshipId()},
-                {"isHead", tempcell.getIsHead()}
+                {"isHead", tempcell.getIsHead()},
+                {"y", tempcell.getCoordinates().first},
+                {"x", tempcell.getCoordinates().second}
             });
         }
     }
@@ -40,12 +42,13 @@ void Serialization::to_json(Field& field, std::string key) {
                 {"x", x},
                 {"y", y},
                 {"state", field[y][x].GetFieldState()},
-				{"idBattleShip", field[y][x].getIdBattleship()} // уточнить значения
+				{"idBattleShip", field[y][x].getIdBattleship()},
+                {"isHead", field[y][x].isHeadBattleship()} // уточнить значения
                 // {"value", temp[y*field.getRows() + x].value} // уточнить значения
             };
         }
     }
-
+    std::cout << "ended field\n";
     j[key] = jf;
 }
 

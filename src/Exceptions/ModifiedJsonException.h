@@ -1,12 +1,11 @@
 #pragma once
+
 #include <exception>
 #include <string>
 
-class ReaderException: public std::exception {
-	private:
+class ModifiedJsonException : public std::exception {
 	std::string message;
-
 	public:
-	ReaderException(std::string message);
+	ModifiedJsonException(std::string message);
 	const char* what() const noexcept override;
 };

@@ -2,7 +2,11 @@
 
 
 void CoordHolder::read () {
-    coords = coordReader.readCoords ();
+    coords = coordReader.readCoords();
+    if (coords.first < 0 || coords.second < 0)
+    {
+        throw ReaderException(std::string("Вы ввели некоректные координаты"));
+    }
 }
 
 

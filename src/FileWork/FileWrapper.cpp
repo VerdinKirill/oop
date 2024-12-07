@@ -14,9 +14,7 @@ void FileWrapper::read(nlohmann::json& j) {
     if (!file.is_open() || !file.good()) {
         throw  UnableOpenFileException();
     }
-    std::cout << "try to read file\n"; 
     file >> j;
-    std::cout << "ended to read file\n";
 }
 
 void FileWrapper::write(nlohmann::json& j) {

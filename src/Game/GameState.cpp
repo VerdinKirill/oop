@@ -1,22 +1,30 @@
 #include "GameState.h"
 
+std::string GameState::getHash(std::string data)
+{
+	std::hash<std::string> hash_fn;
+	size_t hash = hash_fn(data);
+	std::stringstream ss;
+	ss << std::hex << hash;
+	return ss.str();
+}
+
 Bot &GameState::getBot()
 {
 	return this->bot;
 }
-
 
 User &GameState::getUser()
 {
 	return this->user;
 }
 
-int GameState::getRounds()
+int &GameState::getRounds()
 {
 	return this->countRounds;
 }
 
-int GameState::getMoves()
+int &GameState::getMoves()
 {
 	return this->countMoves;
 }
@@ -47,18 +55,21 @@ std::ostream &operator<<(std::ostream &os, GameState &state)
 	return os;
 }
 
-
 FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state)
 {
 	nlohmann::json j;
-	Serialization seri(j);
+	nlohmann::json data;
+	Serialization seri(data);
 
 	seri.to_json(state.getUser().getShipManager(), "playerShipManager");
 	seri.to_json(state.getUser().getField(), "playerField");
 	seri.to_json(state.getUser().getSkillManager(), "playerAbilityManager");
 	seri.to_json(state.getBot().getShipManager(), "botShipManager");
 	seri.to_json(state.getBot().getField(), "botField");
-	j["currentDamage"] = state.getUser().getDamage();
+	data["currentDamage"] = state.getUser().getDamage();
+	j["data"] = data;
+	std::string jsonString = data.dump();
+	j["hash"] =  state.getHash(jsonString);
 
 	try
 	{
@@ -73,16 +84,21 @@ FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state)
 }
 
 void connectShipManagerField(ShipManager &sm, Field &f)
-{
-	for (int y = 0; y < f.GetHeight(); y++)
-	{
-		for (int x = 0; x < f.GetWidth(); x++)
-		{
-			if (f[y][x].getIdBattleship() != -1 && f[y][x].isHeadBattleship())
-			{
-				auto &ship = sm.getBattleshipById(f[y][x].getIdBattleship());
-				f.SetBattleship(x, y, ship, ship.GetDirection());
-			}
+{	
+	std::cout << sm.GetNumberBattleships() << "battleships\n";
+	for (int i = 0; i < sm.GetNumberBattleships(); i++)
+	{	
+		std::cout << i <<" i\n";
+		auto& battleship = sm[i];
+		std::cout << battleship.getId() << "id of battleship\n";
+		for (int j = 0; j < battleship.GetLength(); j++)
+		{	
+			auto& cell = battleship[j];
+			std::cout << cell.GetState() << "state\n";
+			std::cout << j << " j\n";
+			auto coordinates = cell.getCoordinates();
+			f[coordinates.first][coordinates.second].setBattleshipCell(cell);
+			std::cout << "pasted shipcell into ship" << coordinates.first << " " << coordinates.second << '\n';
 		}
 	}
 }
@@ -99,8 +115,17 @@ FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state)
 		std::cerr << e.what() << std::endl;
 		return fileWrapper;
 	}
+	auto data = j["data"];
+	std::string hashValue = j["hash"];
 
-	Deserialization deseri(j);
+	std::string jsonString = data.dump();
+	if (hashValue != state.getHash(jsonString))
+	{	
+		std::cout << hashValue << " " << state.getHash(jsonString) << "\n"; 
+		throw ModifiedJsonException("");
+	}
+
+	Deserialization deseri(data);
 	ShipManager shipManager;
 	Field field;
 	SkillManager skillManager;
@@ -115,9 +140,9 @@ FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state)
 
 	deseri.from_json(skillManager, "playerAbilityManager");
 	std::cout << "ya tut load playerAvilityManager\n";
-
+	std::cout << field.GetHeight() << field.GetWidth() << '\n';
 	connectShipManagerField(shipManager, field);
-
+	std::cout << field.GetHeight() << field.GetWidth() << '\n';
 	deseri.from_json(enemyShipManager, "botShipManager");
 	deseri.from_json(enemyField, "botField");
 	connectShipManagerField(enemyShipManager, enemyField);
@@ -148,22 +173,22 @@ GameState &GameState::loadGame(const std::string fileName)
 	std::cout << "IM HEAR\n";
 }
 
-void GameState::setBot(Bot& bot)
+void GameState::setBot(Bot &bot)
 {
 	this->bot = bot;
 }
 
-void GameState::setMoves(int& moves)
+void GameState::setMoves(int &moves)
 {
 	this->countMoves = moves;
 }
 
-void GameState::setRounds(int& rounds)
+void GameState::setRounds(int &rounds)
 {
 	this->countRounds = rounds;
 }
 
-void GameState::setUser(User& user)
+void GameState::setUser(User &user)
 {
 	this->user = user;
 }

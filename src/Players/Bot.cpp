@@ -2,67 +2,68 @@
 
 Bot::Bot(int width, int height, int numShips4, int numShips3, int numShips2, int numShips1)
 {
-	this->field = new Field(width, height);
-	this->shipManager = new ShipManager(numShips4, numShips3, numShips2, numShips1);
+	this->field = Field(width, height);
+	this->shipManager = ShipManager(numShips4, numShips3, numShips2, numShips1);
 	this->damage = 1;
 }
 Bot::~Bot()
 {
-	delete this->field;
-	delete this->shipManager;
 }
 
+Bot::Bot()
+{
+}
 
 void Bot::placeShips()
 {
 	int x = 0;
 	int y = 0;
-	for (int i = this->shipManager->GetNumberBattleships()-1; i >= 0; i--)
+	for (int i = this->shipManager.GetNumberBattleships() - 1; i >= 0; i--)
 	{
 		try
 		{
-			this->field->SetBattleship(x, y, (this->shipManager)->operator[](i), Direction::Up);
+			this->field.SetBattleship(x, y, (this->shipManager).operator[](i), Direction::Up);
 		}
 		catch (ShipNearAnotherException &e)
-		{	
-			std::cout << "You entered small field for battleships\n" << (this->shipManager)->operator[](i).GetLength() << '\n';
+		{
+			std::cout << "You entered small field for battleships\n"
+					  << (this->shipManager).operator[](i).GetLength() << '\n';
 		}
-		x+=2;
+		x += 2;
 	}
 }
 
 Action Bot::move(Player &player)
-{	
-	auto rand = Randomizer(1,this->field->GetHeight());
+{
+	auto rand = Randomizer(1, this->field.GetHeight());
 	int y = rand.getRandomInt();
-	rand = Randomizer(1, this->field->GetWidth());
+	rand = Randomizer(1, this->field.GetWidth());
 	int x = rand.getRandomInt();
-	auto field = player.getField();
+	auto& field = player.getField();
 	int n = rand.getRandomInt();
 	field.AttackCell(x, y, this->damage);
 	return Action::Attack;
 }
 
-Field& Bot::getField()
+Field &Bot::getField()
 {
-	return *this->field;
+	return this->field;
 }
 
-ShipManager& Bot::getShipManager()
+ShipManager &Bot::getShipManager()
 {
-	return *this->shipManager;
+	return this->shipManager;
 }
 
-void Bot::setShipManager(ShipManager& sm)
+void Bot::setShipManager(ShipManager &sm)
 {
-	this->shipManager = &sm;
+	this->shipManager = sm;
 }
 
-void Bot::setField(Field& f)
+void Bot::setField(Field &f)
 {
-	this->field = &f;
+	this->field = f;
 }
-
 
 //  User::useSkill(Player& player)
 // {

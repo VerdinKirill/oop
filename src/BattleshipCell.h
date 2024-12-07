@@ -17,9 +17,11 @@ class BattleshipCell{
 	int getBattleshipId();
 	void setIsHead(bool i);
 	bool getIsHead();
-
+	void setCoordinates(std::pair<int, int> coordinates);
+	std::pair<int, int> getCoordinates();
 
 	private:
+	std::pair<int, int> coordinates;
 	bool isHead;
 	Battleship* battleship;
 	BattleshipCellState state;	

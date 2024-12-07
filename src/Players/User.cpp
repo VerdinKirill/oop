@@ -2,17 +2,17 @@
 
 User::User(int width, int height, int numShips4, int numShips3, int numShips2, int numShips1)
 {
-	this->field = new Field(width, height);
-	this->skillManager = new SkillManager();
-	this->shipManager = new ShipManager(numShips4, numShips3, numShips2, numShips1);
+	this->field = Field(width, height);
+	this->skillManager = SkillManager();
+	this->shipManager = ShipManager(numShips4, numShips3, numShips2, numShips1);
 	this->damage = 1;
 }
 
+User::User()
+{
+}
 User::~User()
 {
-	delete this->field;
-	delete this->shipManager;
-	delete this->skillManager;
 }
 
 Action User::move(Player &player)
@@ -52,23 +52,22 @@ Action User::move(Player &player)
 	{
 		std::cout << "save game\n";
 		return Action::Save;
-
 	}
-		auto coordsHolder = CoordHolder();
-		coordsHolder.read();
-		auto coords = coordsHolder.getCoords();
-		this->attack(player, coords.first - 1, coords.second - 1);
-		return Action::Attack;
+	auto coordsHolder = CoordHolder();
+	coordsHolder.read();
+	auto coords = coordsHolder.getCoords();
+	this->attack(player, coords.first - 1, coords.second - 1);
+	return Action::Attack;
 }
 
 bool User::attack(Player &player, int x, int y)
 {
 	auto result = player.getField().AttackCell(x, y, damage);
 	damage = 1;
-	std:: cout << "ya tut";
+	std::cout << "ya tut";
 	if (result)
 	{
-		this->skillManager->addSkill();
+		this->skillManager.addSkill();
 	}
 	return result;
 }
@@ -76,7 +75,7 @@ bool User::attack(Player &player, int x, int y)
 bool User::useSkill(Player &player)
 {
 	auto infoHolder = SkillInfoHolder(&player.getShipManager(), &player.getField(), CoordHolder());
-	auto skill = this->skillManager->getSkill(infoHolder);
+	auto skill = this->skillManager.getSkill(infoHolder);
 	auto skillResult = skill->use();
 	this->damage = skillResult.get_damage();
 	if (this->damage != 1)
@@ -85,7 +84,7 @@ bool User::useSkill(Player &player)
 	}
 	if (skillResult.get_is_battleship_destroyed())
 	{
-		this->skillManager->addSkill();
+		this->skillManager.addSkill();
 		std::cout << "Так как вы уничтожили корабль, вы получили новую способность!\n";
 	}
 	if (skillResult.get_is_battleship_cell())
@@ -100,18 +99,37 @@ void User::placeShips()
 {
 	auto holder = CoordHolder();
 	auto holderDirection = DirectionHolder();
-	for (int i = 0; i < this->getShipManager().GetNumberBattleships(); i++)
+	std::cout << shipManager.GetNumberBattleships() << "num of battleships\n";
+	for (int i = 0; i < shipManager.GetNumberBattleships(); i++)
 	{
-		holder.read();
-		auto coords = holder.getCoords();
-		holderDirection.read();
-		auto direction = holderDirection.getDirection();
+		std::pair<int, int> coords;
+		Direction direction;
 		try
 		{
-			auto &ship = (*shipManager)[i];
-			this->field->SetBattleship(coords.first, coords.second, ship, direction);
-			std::cout << (*this->field)[1][1];
-			this->field->OpenField();
+			holder.read();
+			coords = holder.getCoords();
+		}
+		catch (ReaderException &e)
+		{
+			std::cout << e.what() << '\n';
+			i--;
+			continue;
+		}
+		try{
+			holderDirection.read();
+			direction = holderDirection.getDirection();
+		}catch(UnknownCommandException& error)
+		{
+			std::cout << error.what() << '\n';
+			i--;
+			continue;
+		}
+		try
+		{
+			auto &ship = shipManager[i];
+			this->field.SetBattleship(coords.first, coords.second, ship, direction);
+			std::cout << this->field[coords.first][coords.second].GetFieldState() << "state of current cell\n";
+			this->field.OpenField();
 		}
 		catch (ShipNearAnotherException &e)
 		{
@@ -123,38 +141,37 @@ void User::placeShips()
 
 Field &User::getField()
 {
-	return *this->field;
+	return this->field;
 }
 
 ShipManager &User::getShipManager()
 {
-	return *this->shipManager;
+	return this->shipManager;
 }
 
 SkillManager &User::getSkillManager()
 {
-	return *this->skillManager;
+	return this->skillManager;
 }
 
 int User::getDamage()
 {
- return this->damage;
+	return this->damage;
 }
 
-
-void User::setShipManager(ShipManager& sm)
+void User::setShipManager(ShipManager &sm)
 {
-	this->shipManager = &sm;
+	this->shipManager = sm;
 }
 
-void User::setField(Field& f)
+void User::setField(Field &f)
 {
-	this->field = &f;
+	this->field = f;
 }
 
-void User::setSkillManager(SkillManager& sm)
+void User::setSkillManager(SkillManager &sm)
 {
-	this->skillManager = &sm;
+	this->skillManager = sm;
 }
 //  User::useSkill(Player& player)
 // {

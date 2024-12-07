@@ -25,9 +25,13 @@ class FieldCell{
 	bool IsNearWithShip();
 	int getIdBattleship();
 	void setIdBattleship(int id);
-	bool isHeadBattleship();
+	bool isHeadBattleship(bool i = false);
+	void setIsHead(bool isHead);
+	void setBattleshipCell(BattleshipCell& cell);
+	void setCoordinates(std::pair<int, int> coordinates);
 	
 	private:
+	bool isHead;
 	int battleshipId;
 	FieldCellState state;
 	BattleshipCell* ship_cell;

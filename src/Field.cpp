@@ -44,6 +44,19 @@ const bool Field::CheckPos(int x, int y)
 	return true;
 }
 
+
+Field::Field(const Field& other) : height(other.height), width(other.width), field(other.field) {}
+
+// КОПИРУЮЩИЙ ОПЕРАТОР ПРИСВАИВАНИЯ
+Field& Field::operator=(const Field& other) {
+    if (this != &other) {
+        height = other.height;
+        width= other.width;
+        field = other.field;
+    }
+    return *this;
+}
+
 const bool Field::CheckPosBattleship(Battleship &battleship, int x, int y)
 {
 	Pos pos_tail = this->GetTailPos(x, y, battleship);
@@ -122,7 +135,12 @@ void Field::SetBattleship(int x, int y, Battleship &battleship, Direction direct
 		{
 			throw ShipNearAnotherException();
 		}
+		battleship[1];
+		battleship[count].setCoordinates({pos.y, pos.x});
 		this->field[pos.y][pos.x].SetShipCell(battleship[count++]);
+		std::cout << this->field[pos.y][pos.x].isBattleshipCell() << "is Battleship cell\n";
+		std::cout << this->field[pos.y][pos.x].getIdBattleship() << "ID OF BATTLESHIP\n";
+		std::cout << battleship[count-1].GetState() << "state of battleshipCell\n";
 	}
 	for (auto pos : positions)
 	{
@@ -153,15 +171,6 @@ std::vector<FieldCell> &Field::operator[](int index)
 	return field[index];
 }
 
-Field::Field(const Field &other_field) : field(*(&other_field.field)), width(other_field.width), height(other_field.height) {}
-
-Field &Field::operator=(const Field &other_field)
-{
-	Field temp(other_field);
-	auto new_field = &(other_field.field);
-	field = *(new_field);
-	return *this;
-}
 
 void Field::row_to_string(const std::vector<std::string> &row, const std::vector<size_t> &widths, std::stringstream &ss)
 {

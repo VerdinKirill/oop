@@ -11,16 +11,16 @@
 
 class PvEGame : public Game {
 
-	User user;
-	Bot bot;
-	GameState state;
+	User& user;
+	Bot& bot;
+	GameState& state;
 	Player* currentPlayer;
 	Player* currentEnemy;
-	int countMoves;
-	int countRounds;
+	int& countMoves;
+	int& countRounds;
 
 	public:
-	PvEGame(GameState& state);
+	PvEGame(User& user, Bot& bot, GameState& state): user(user), bot(bot), state(state), countMoves(state.getMoves()), countRounds(state.getRounds()){};
 	// PvEGame(int width, int height, int numLength4, int numLength3, int numLength2, int numLength1);
 	void start () override;
 	void placeShips() override;

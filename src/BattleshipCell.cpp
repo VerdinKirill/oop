@@ -28,6 +28,16 @@ void BattleshipCell::setIsHead(bool i)
 	this->isHead = i;
 }
 
+void BattleshipCell::setCoordinates(std::pair<int, int> coordinates)
+{
+	this->coordinates = coordinates;
+}
+
+std::pair<int, int> BattleshipCell::getCoordinates()
+{
+	return this->coordinates;
+}
+
 
 
 bool BattleshipCell::AttackBattleshipCell(int damage)

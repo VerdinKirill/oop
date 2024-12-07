@@ -19,7 +19,7 @@ public:
 	void SetDirection(Direction direcrion);
 	Direction GetDirection();
 	BattleshipLength GetLength();
-	BattleshipCell& operator[](unsigned int index);
+	BattleshipCell& operator[](int index);
 	bool isDestroyed();
 	int getId();
 	

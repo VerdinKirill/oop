@@ -21,7 +21,7 @@ void Deserialization::from_json(ShipManager& shipManager, std::string key) {
 		if (len==1)
 			count1len++;
     }
-	std::cout <<count4len << " " <<count3len << " " <<count2len << " " << count1len << '\n';
+	// std::cout <<count4len << " " <<count3len << " " <<count2len << " " << count1len << '\n';
     shipManager = ShipManager(count4len, count3len, count2len, count1len);
 
     for (size_t i = 0; i < shipManager.GetNumberBattleships(); i++) {
@@ -31,12 +31,17 @@ void Deserialization::from_json(ShipManager& shipManager, std::string key) {
 		auto segments = jsm.at(key).at("segments");
 		auto it = segments.begin();
         for (int j = 0; j < ship.GetLength() && it < segments.end(); j++, ++it) {
-            BattleshipCell& segment = ship[i];
+            BattleshipCell& segment = ship[j];
 			auto segmentJson = it.value();
 			segment.SetState(BattleshipCellState(segmentJson.at("State")));
+            std::pair<int, int> coordinates;
+            coordinates.first = segmentJson.at("y");
+            coordinates.second = segmentJson.at("x");
+            segment.setCoordinates(coordinates);
+            std::cout << segment.getCoordinates().first << " " << segment.getCoordinates().second << "coordinates of battleship cell\n";
         }
     }
-	std::cout << "ended parse json for shipmanager";
+	std::cout << "ended parse json for shipmanager\n";
 }
 
 void Deserialization::from_json(Field& field, std::string key) {
@@ -49,8 +54,10 @@ void Deserialization::from_json(Field& field, std::string key) {
             FieldCell& cell = field[y][x];
 			cell.setIdBattleship(jf.at(key).at("idBattleShip"));
             cell.SetFieldCellState(FieldCellState(jf.at(key).at("state")));
+			cell.setIsHead(jf.at(key).at("isHead"));
         }
     }
+	std::cout << "endedfor field\n";
 }
 
 void Deserialization::from_json(SkillManager& skillManager, std::string key) {
@@ -59,7 +66,7 @@ void Deserialization::from_json(SkillManager& skillManager, std::string key) {
 	skillManager.pop();
 	skillManager.pop();
 	skillManager.pop();
-
+	std::cout << "ya tut";
     for (const auto& jability : jam.at("abilities")) {
        if (jability == "DoubleDamage") {
            skillManager.addSkill(new DoubleDamageFactory());
@@ -71,4 +78,5 @@ void Deserialization::from_json(SkillManager& skillManager, std::string key) {
            skillManager.addSkill(new BombardmentFactory());
        }
     }
+	std::cout << "Ended parse json for skillManager";
 }

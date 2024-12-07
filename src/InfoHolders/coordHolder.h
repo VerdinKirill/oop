@@ -3,6 +3,7 @@
 
 #include "InfoHolder.h"
 #include "coordReader.h"
+#include "../Exceptions/ReaderException.h"
 
 
 class CoordHolder : public InfoHolder {

@@ -11,7 +11,7 @@ Battleship::Battleship(BattleshipLength length, Direction direction, int id)
 	this->direction = direction;
 }
 
-BattleshipCell &Battleship::operator[](unsigned int index)
+BattleshipCell &Battleship::operator[](int index)
 {
 	return battleship[index];
 }

@@ -42,8 +42,13 @@ add_executable(battleships_war
     Exceptions/ShipNearAnotherException.cpp
     Exceptions/BotException.h
     Exceptions/BotException.cpp
+    Exceptions/ReaderException.h
+    Exceptions/ReaderException.cpp
+
     Exceptions/UnknownCommandException.h
     Exceptions/UnknownCommandException.cpp
+    Exceptions/ModifiedJsonException.h
+    Exceptions/ModifiedJsonException.cpp
     InfoHolders/commandHolder.h
     InfoHolders/commandHolder.cpp
     InfoHolders/coordHolder.h

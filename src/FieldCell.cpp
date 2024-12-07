@@ -14,6 +14,7 @@ FieldCell::FieldCell(BattleshipCell &ship_cell)
 void FieldCell::SetShipCell(BattleshipCell &ship_cell)
 {
 	this->ship_cell = &ship_cell;
+	std::cout << this->ship_cell->GetState() << "ship_cell_state in field cell\n";
 }
 
 void FieldCell::SetFieldCellState(FieldCellState state)
@@ -25,7 +26,7 @@ void FieldCell::SetFieldCellState(FieldCellState state)
 void FieldCell::OpenCellState()
 {
 	if (this->ship_cell)
-	{	
+	{
 		if (ship_cell->GetState() == BattleshipCellState::Unbroken)
 			this->SetFieldCellState(FieldCellState::Ship2);
 		if (ship_cell->GetState() == BattleshipCellState::Damaged)
@@ -45,7 +46,7 @@ const FieldCellState FieldCell::GetFieldState()
 bool FieldCell::AttackCell(int damage)
 {
 	if (this->ship_cell)
-	{	
+	{
 		auto result = this->ship_cell->AttackBattleshipCell(damage);
 		this->OpenCellState();
 		return result;
@@ -84,7 +85,7 @@ std::string FieldCell::to_string()
 	{
 		value = "🟨";
 	}
-	else 
+	else
 	{
 		value = "🟥";
 	}
@@ -115,9 +116,32 @@ bool FieldCell::isBattleshipCell()
 	return true;
 }
 
-bool FieldCell::isHeadBattleship()
+bool FieldCell::isHeadBattleship(bool i)
 {
-	if (this->isBattleshipCell())
-		return this->ship_cell->getIsHead();
-	return false;
+	if (!i)
+	{
+		if (this->isBattleshipCell())
+		{
+			return this->ship_cell->getIsHead();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return this->isHead;
+	}
 }
+
+void FieldCell::setIsHead(bool isHead)
+{
+	this->isHead = isHead;
+}
+
+void FieldCell::setBattleshipCell(BattleshipCell& cell)
+{
+	this->ship_cell = &cell;
+}
+

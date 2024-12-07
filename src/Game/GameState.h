@@ -8,7 +8,7 @@
 #include "../libraries/json.hpp"
 #include "../FileWork/Serialization.h"
 #include "../FileWork/Deserialization.h"
-
+#include "../Exceptions/ModifiedJsonException.h"
 class Bot;
 class User;
 
@@ -23,8 +23,9 @@ public:
 	GameState(User& user, Bot& bot, int& countRounds, int& countMoves) :user(user), bot(bot), countRounds(countRounds), countMoves(countMoves){};
 	Bot &getBot();
 	User &getUser();
-	int getRounds();
-	int getMoves();
+	int& getRounds();
+	int& getMoves();
+	std::string getHash(std::string data);
 	void setBot(Bot &bot);
 	void setUser(User& user);
 	void setMoves(int& moves);

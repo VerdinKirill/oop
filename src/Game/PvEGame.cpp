@@ -1,34 +1,9 @@
 #include "PvEGame.h"
 
-PvEGame::PvEGame(GameState& gameState):state(gameState)
-{
-	this->countMoves = 1;
-	this->countRounds = 1;
-	state.setMoves(this->countMoves);
-	state.setRounds(this->countRounds);
-}
+
 
 void PvEGame::start()
 {
-	auto coordHolder = CoordHolder();
-	std::cout << "Введите размер поля через пробел\n";
-	coordHolder.read();
-	auto coords = coordHolder.getCoords();
-	std::vector<int> lengths;
-	int length;
-	for (int i = 1; i < 5; i++)
-	{
-		std::cout << "Введите количество кораблей длины " << i << " \n";
-		std::cin >> length;
-		lengths.push_back(length);
-	}
-	this->bot = Bot(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
-	this->user = User(coords.first, coords.second, lengths[3], lengths[2], lengths[1], lengths[0]);
-	std::cout << "ya tut";
-	this->state.setBot(bot);
-	std::cout << "ya tut";
-	this->state.setUser(user);
-	std::cout << "ya tut";
 	this->placeShips();
 	this->process();
 }

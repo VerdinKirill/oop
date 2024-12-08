@@ -1,5 +1,6 @@
 #include "ShipManager.h"
 #include <iostream>
+#include <exception>
 
 void ShipManager::CreateBattleships(BattleshipLength length, int num)
 {
@@ -18,30 +19,22 @@ int ShipManager::GetNumberBattleships()
 
 Battleship &ShipManager::operator[](int n)
 {
-    // if (n >= this->GetNumberBattleships())
-    // {
-    //     return ;
-    // }
-    // std::cout << n << ' ' << length_1_ships << " " << length_2_ships << " " << length_3_ships << " " << length_4_ships << "\n";
     int index = 0;
     if (n - length_1_ships < 0)
     {
         return *battleships[1][n];
     }
     n -= length_1_ships;
-    // std::cout << n << '\n';
     if (n - length_2_ships < 0)
     {
         return *battleships[2][n];
     }
     n -= length_2_ships;
-    // std::cout << n << '\n';
     if (n - length_3_ships < 0)
     {
         return *battleships[3][n];
     }
     n -= length_3_ships;
-    // std::cout << n << ' ' << length_3_ships << ' ' << n - length_3_ships << ' ' << (n - length_3_ships < 0) << '\n';
     return *battleships[4][n];
 }
 
@@ -61,19 +54,10 @@ ShipManager::ShipManager(int length_4_ships, int length_3_ships, int length_2_sh
 Battleship &ShipManager::GetBattleship(BattleshipLength length, int num)
 {
     Battleship &battleship_output = *(battleships[int(length)][num]);
-    // std::cout << "adress of battleship in shipmanager" << &battleship_output << '\n';
 
     return battleship_output;
 }
 
-// ShipManager::~ShipManager()
-// {
-//     auto length = length_1_ships + length_2_ships + length_3_ships + length_4_ships;
-//     for (size_t i = 0; i < length; i++)
-//     {
-//         delete &(*this)[i];
-//     }
-// }
 
 bool ShipManager::isDefeated()
 {

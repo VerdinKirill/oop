@@ -48,7 +48,6 @@ void Serialization::to_json(Field& field, std::string key) {
             };
         }
     }
-    std::cout << "ended field\n";
     j[key] = jf;
 }
 

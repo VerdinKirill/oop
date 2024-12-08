@@ -25,6 +25,6 @@ Command CommandReader::read()
 		return Command::load;
 	}
 	else {
-		throw new UnknownCommandException(ch);
+		throw UnknownCommandException(ch);
 	}
 };

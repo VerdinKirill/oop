@@ -14,13 +14,11 @@ FieldCell::FieldCell(BattleshipCell &ship_cell)
 void FieldCell::SetShipCell(BattleshipCell &ship_cell)
 {
 	this->ship_cell = &ship_cell;
-	std::cout << this->ship_cell->GetState() << "ship_cell_state in field cell\n";
 }
 
 void FieldCell::SetFieldCellState(FieldCellState state)
 {
 	this->state = state;
-	// std::cout << unsigned(this->state) << "state of cell\n";
 }
 
 void FieldCell::OpenCellState()

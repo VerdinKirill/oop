@@ -37,8 +37,9 @@ Action User::move(Player &player)
 			commandHolder.read();
 		}
 		catch (UnknownCommandException &e)
-		{
-			std::cout << "Unknown Command" << '\n';
+		{	
+			std::cerr <<  e.what() << '\n';
+			// std::cout << "Unknown Command" << '\n';
 		}
 		cmd = commandHolder.getCommand();
 	}

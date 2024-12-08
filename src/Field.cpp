@@ -105,7 +105,6 @@ std::vector<Pos> Field::GetPosesOfShip(Battleship &battleship, int x, int y)
 {
 	std::vector<Pos> positions;
 	Pos pos_tail = this->GetTailPos(x, y, battleship);
-	std::cout << pos_tail.x << " " << pos_tail.y << '\n';
 	int x_step = (x < pos_tail.x) ? 1 : (x == pos_tail.x) ? 0
 														  : -1;
 	int y_step = (y < pos_tail.y) ? 1 : (y == pos_tail.y) ? 0
@@ -138,9 +137,6 @@ void Field::SetBattleship(int x, int y, Battleship &battleship, Direction direct
 		battleship[1];
 		battleship[count].setCoordinates({pos.y, pos.x});
 		this->field[pos.y][pos.x].SetShipCell(battleship[count++]);
-		std::cout << this->field[pos.y][pos.x].isBattleshipCell() << "is Battleship cell\n";
-		std::cout << this->field[pos.y][pos.x].getIdBattleship() << "ID OF BATTLESHIP\n";
-		std::cout << battleship[count-1].GetState() << "state of battleshipCell\n";
 	}
 	for (auto pos : positions)
 	{
@@ -179,7 +175,6 @@ void Field::row_to_string(const std::vector<std::string> &row, const std::vector
 	{
 		ss << ' ';
 		ss.width(widths[i]);
-		// std::cout << widths[i];
 		ss << row[i] << " |";
 	}
 	ss << '\n';
@@ -198,9 +193,7 @@ void Field::break_of_cells(const std::vector<size_t> &widths, std::stringstream 
 }
 
 std::string Field::to_string()
-{
-	// std::cout << "HI!";
-	std::vector<std::string> field_headers = {""};
+{	std::vector<std::string> field_headers = {""};
 	std::stringstream ss;
 	ss.setf(std::ios::left, std::ios::adjustfield);
 	auto widths = std::vector(width + 1, std::size_t(0));
@@ -253,7 +246,6 @@ void Field::OpenField()
 		for (size_t x = 0; x < width; x++)
 		{
 			field[y][x].OpenCellState();
-			// std::cout << int(field[y][x].GetFieldState());
 		}
 	}
 }

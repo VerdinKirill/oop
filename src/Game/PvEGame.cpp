@@ -17,8 +17,7 @@ void PvEGame::placeShips()
 void PvEGame::process()
 {
 	std::string filename = "/Users/kirillverdin/programming/oop/File.json";
-	std::cout << "kapec\n";
-	std::cout << this->user.getDamage();
+	std::cout << "Ваш текущий урон: "<<this->user.getDamage() << '\n';
 	while (!this->user.getShipManager().isDefeated())
 	{
 		std::cout << countMoves << " move\n";
@@ -48,7 +47,7 @@ void PvEGame::process()
 				this->load(filename);
 				auto state = this->getGameState();
 				std::cout << state;
-				std::cout << "loaded";
+				std::cout << "Игра была успешно загружена!";
 				continue;
 			}
 		}

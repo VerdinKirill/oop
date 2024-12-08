@@ -2,7 +2,7 @@
 
 UnknownCommandException::UnknownCommandException(char command)
 {
-	this->message = "Unknown Command" + command;
+	this->message = std::string("Unknown Command ") + command;
 }
 
 const char* UnknownCommandException:: what() const noexcept

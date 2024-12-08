@@ -28,6 +28,6 @@ Direction DirectionReader::read()
 	}
 	else
 	{
-		throw new UnknownCommandException(d);
+		throw UnknownCommandException(d);
 	}
 }

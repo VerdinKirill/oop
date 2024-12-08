@@ -5,7 +5,6 @@ BattleshipCell::BattleshipCell(Battleship* battleship)
 	this->battleship = battleship;
 	(this->state) = BattleshipCellState::Unbroken;
 	this->isHead = false;
-	// std::cout << int(this->state) << '\n';
 }
 
 BattleshipCellState BattleshipCell::GetState()
@@ -45,12 +44,10 @@ bool BattleshipCell::AttackBattleshipCell(int damage)
 	auto start_state = state;
 	state = (state-damage > 0) ? BattleshipCellState(state-damage) : BattleshipCellState::Destroyed;
 	return (start_state!= BattleshipCellState::Destroyed) ? isBattleshipDestroyed() : false;
-	// std::cout <<  int(state) << "you";
 }
 
 bool BattleshipCell::isBattleshipDestroyed()
 {	
-	// std::cout <<"adress of battleship in battleshipcell: "<< battleship << '\n';
 	return battleship->isDestroyed();
 }
 

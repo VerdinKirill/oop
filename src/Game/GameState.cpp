@@ -42,7 +42,6 @@ std::ostream &operator<<(std::ostream &os, GameState &state)
 	os << botField << '\n';
 	os << "Ваши способности\n";
 	auto userSkillManager = state.getUser().getSkillManager();
-	std::cout << "Количество способностей " << userSkillManager.size() << '\n';
 	if (userSkillManager.size() == 0)
 	{
 		os << "Отсутсвуют\n";
@@ -85,20 +84,14 @@ FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state)
 
 void connectShipManagerField(ShipManager &sm, Field &f)
 {	
-	std::cout << sm.GetNumberBattleships() << "battleships\n";
 	for (int i = 0; i < sm.GetNumberBattleships(); i++)
 	{	
-		std::cout << i <<" i\n";
 		auto& battleship = sm[i];
-		std::cout << battleship.getId() << "id of battleship\n";
 		for (int j = 0; j < battleship.GetLength(); j++)
 		{	
 			auto& cell = battleship[j];
-			std::cout << cell.GetState() << "state\n";
-			std::cout << j << " j\n";
 			auto coordinates = cell.getCoordinates();
 			f[coordinates.first][coordinates.second].setBattleshipCell(cell);
-			std::cout << "pasted shipcell into ship" << coordinates.first << " " << coordinates.second << '\n';
 		}
 	}
 }
@@ -121,7 +114,6 @@ FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state)
 	std::string jsonString = data.dump();
 	if (hashValue != state.getHash(jsonString))
 	{	
-		std::cout << hashValue << " " << state.getHash(jsonString) << "\n"; 
 		throw ModifiedJsonException("");
 	}
 
@@ -134,20 +126,14 @@ FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state)
 	Field enemyField;
 
 	deseri.from_json(shipManager, "playerShipManager");
-	std::cout << "ya tut load shipmanager\n";
 	deseri.from_json(field, "playerField");
-	std::cout << "ya tut load playerField\n";
-
 	deseri.from_json(skillManager, "playerAbilityManager");
-	std::cout << "ya tut load playerAvilityManager\n";
-	std::cout << field.GetHeight() << field.GetWidth() << '\n';
 	connectShipManagerField(shipManager, field);
-	std::cout << field.GetHeight() << field.GetWidth() << '\n';
+
 	deseri.from_json(enemyShipManager, "botShipManager");
 	deseri.from_json(enemyField, "botField");
 	connectShipManagerField(enemyShipManager, enemyField);
 
-	// std::cout << field.GetWidth() << " " << field.GetHeight() << "width and height of loaded field\n";
 	state.getUser().getShipManager() = shipManager;
 	state.getUser().getSkillManager() = skillManager;
 	state.getUser().getField() = field;
@@ -170,7 +156,6 @@ GameState &GameState::loadGame(const std::string fileName)
 	FileWrapper fileWrapper(fileName);
 	fileWrapper >> *this;
 	return *this;
-	std::cout << "IM HEAR\n";
 }
 
 void GameState::setBot(Bot &bot)

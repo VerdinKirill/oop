@@ -3,7 +3,6 @@
 
 Battleship::Battleship(BattleshipLength length, Direction direction, int id)
 {	
-	// std::cout << "Adress of ship in ship" << &*this << '\n';
 	this->id = id;
 	this->battleship = std::vector<BattleshipCell>(length, BattleshipCell(this));
 	this->battleship[0].setIsHead(true);
@@ -33,7 +32,6 @@ BattleshipLength Battleship::GetLength()
 
 bool Battleship::isDestroyed()
 {	
-	// std::cout << "len " << this->GetLength() << '\n';
 	for (int i = 0; i < this->GetLength(); i++)
 	{
 		if(battleship[i].GetState() != BattleshipCellState::Destroyed)

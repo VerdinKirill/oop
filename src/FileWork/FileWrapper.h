@@ -9,6 +9,7 @@
 class FileWrapper {
 private:
     std::fstream file;
+    std::string fileName;
 public:
     FileWrapper(const std::string& fileName);
 

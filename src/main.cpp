@@ -35,7 +35,8 @@ int main()
     int countr = 1;
     int countm = 1;
     auto state = GameState(user, bot, countr, countm);
-    Game *gm = new PvEGame(user, bot, state);
+	std::string filename = "/Users/kirillverdin/programming/oop/File.json";
+    Game *gm = new PvEGame(user, bot, state, filename);
     gm->start();
     return 0;
 }

@@ -1,346 +1,1453 @@
 {
-    "botField": {
-        "cell00": {
-            "idBattleShip": 100,
-            "state": 0,
-            "x": 0,
-            "y": 0
+    "data": {
+        "botField": {
+            "cell00": {
+                "idBattleShip": 100,
+                "isHead": true,
+                "state": 0,
+                "x": 0,
+                "y": 0
+            },
+            "cell01": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 0
+            },
+            "cell02": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 0
+            },
+            "cell03": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 0
+            },
+            "cell04": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 0
+            },
+            "cell05": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 0
+            },
+            "cell06": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 0
+            },
+            "cell07": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 0
+            },
+            "cell08": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 0
+            },
+            "cell09": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 0
+            },
+            "cell10": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 1
+            },
+            "cell11": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 1
+            },
+            "cell12": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 1
+            },
+            "cell13": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 1
+            },
+            "cell14": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 1
+            },
+            "cell15": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 1
+            },
+            "cell16": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 1
+            },
+            "cell17": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 1
+            },
+            "cell18": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 1
+            },
+            "cell19": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 1
+            },
+            "cell20": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 2
+            },
+            "cell21": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 2
+            },
+            "cell22": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 2
+            },
+            "cell23": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 2
+            },
+            "cell24": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 2
+            },
+            "cell25": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 2
+            },
+            "cell26": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 2
+            },
+            "cell27": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 2
+            },
+            "cell28": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 2
+            },
+            "cell29": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 2
+            },
+            "cell30": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 3
+            },
+            "cell31": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 3
+            },
+            "cell32": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 3
+            },
+            "cell33": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 3
+            },
+            "cell34": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 3
+            },
+            "cell35": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 3
+            },
+            "cell36": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 3
+            },
+            "cell37": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 3
+            },
+            "cell38": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 3
+            },
+            "cell39": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 3
+            },
+            "cell40": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 4
+            },
+            "cell41": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 4
+            },
+            "cell42": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 4
+            },
+            "cell43": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 4
+            },
+            "cell44": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 4
+            },
+            "cell45": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 4
+            },
+            "cell46": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 4
+            },
+            "cell47": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 4
+            },
+            "cell48": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 4
+            },
+            "cell49": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 4
+            },
+            "cell50": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 5
+            },
+            "cell51": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 5
+            },
+            "cell52": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 5
+            },
+            "cell53": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 5
+            },
+            "cell54": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 5
+            },
+            "cell55": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 5
+            },
+            "cell56": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 5
+            },
+            "cell57": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 5
+            },
+            "cell58": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 5
+            },
+            "cell59": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 5
+            },
+            "cell60": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 6
+            },
+            "cell61": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 6
+            },
+            "cell62": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 6
+            },
+            "cell63": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 6
+            },
+            "cell64": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 6
+            },
+            "cell65": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 6
+            },
+            "cell66": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 6
+            },
+            "cell67": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 6
+            },
+            "cell68": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 6
+            },
+            "cell69": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 6
+            },
+            "cell70": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 7
+            },
+            "cell71": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 7
+            },
+            "cell72": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 7
+            },
+            "cell73": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 7
+            },
+            "cell74": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 7
+            },
+            "cell75": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 7
+            },
+            "cell76": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 7
+            },
+            "cell77": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 7
+            },
+            "cell78": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 7
+            },
+            "cell79": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 7
+            },
+            "cell80": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 8
+            },
+            "cell81": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 8
+            },
+            "cell82": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 8
+            },
+            "cell83": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 8
+            },
+            "cell84": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 8
+            },
+            "cell85": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 8
+            },
+            "cell86": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 8
+            },
+            "cell87": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 8
+            },
+            "cell88": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 8
+            },
+            "cell89": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 8
+            },
+            "cell90": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 0,
+                "y": 9
+            },
+            "cell91": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 1,
+                "y": 9
+            },
+            "cell92": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 2,
+                "y": 9
+            },
+            "cell93": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 3,
+                "y": 9
+            },
+            "cell94": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 4,
+                "y": 9
+            },
+            "cell95": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 5,
+                "y": 9
+            },
+            "cell96": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 6,
+                "y": 9
+            },
+            "cell97": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 7,
+                "y": 9
+            },
+            "cell98": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 8,
+                "y": 9
+            },
+            "cell99": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 0,
+                "x": 9,
+                "y": 9
+            },
+            "height": 10,
+            "width": 10
         },
-        "cell01": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 1,
-            "y": 0
+        "botShipManager": {
+            "ship0": {
+                "direction": 0,
+                "id": 100,
+                "length": 1,
+                "segments": [
+                    {
+                        "State": 2,
+                        "idBattleship": 100,
+                        "isHead": true,
+                        "x": 0,
+                        "y": 0
+                    }
+                ]
+            }
         },
-        "cell02": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 2,
-            "y": 0
-        },
-        "cell03": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 3,
-            "y": 0
-        },
-        "cell04": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 4,
-            "y": 0
-        },
-        "cell10": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 0,
-            "y": 1
-        },
-        "cell11": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 1,
-            "y": 1
-        },
-        "cell12": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 2,
-            "y": 1
-        },
-        "cell13": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 3,
-            "y": 1
-        },
-        "cell14": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 4,
-            "y": 1
-        },
-        "cell20": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 0,
-            "y": 2
-        },
-        "cell21": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 1,
-            "y": 2
-        },
-        "cell22": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 2,
-            "y": 2
-        },
-        "cell23": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 3,
-            "y": 2
-        },
-        "cell24": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 4,
-            "y": 2
-        },
-        "cell30": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 0,
-            "y": 3
-        },
-        "cell31": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 1,
-            "y": 3
-        },
-        "cell32": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 2,
-            "y": 3
-        },
-        "cell33": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 3,
-            "y": 3
-        },
-        "cell34": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 4,
-            "y": 3
-        },
-        "cell40": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 0,
-            "y": 4
-        },
-        "cell41": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 1,
-            "y": 4
-        },
-        "cell42": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 2,
-            "y": 4
-        },
-        "cell43": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 3,
-            "y": 4
-        },
-        "cell44": {
-            "idBattleShip": -1,
-            "state": 0,
-            "x": 4,
-            "y": 4
-        },
-        "height": 5,
-        "width": 5
-    },
-    "botShipManager": {
-        "ship0": {
-            "direction": 0,
-            "id": 100,
-            "length": 1,
-            "segments": [
-                {
-                    "State": 2,
-                    "idBattleship": 100,
-                    "isHead": true
-                }
+        "currentDamage": 1,
+        "playerAbilityManager": {
+            "abilities": [
+                "DoubleDamage",
+                "Scaner",
+                "Bombardment"
             ]
+        },
+        "playerField": {
+            "cell00": {
+                "idBattleShip": 100,
+                "isHead": true,
+                "state": 2,
+                "x": 0,
+                "y": 0
+            },
+            "cell01": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 0
+            },
+            "cell02": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 0
+            },
+            "cell03": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 0
+            },
+            "cell04": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 0
+            },
+            "cell05": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 0
+            },
+            "cell06": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 0
+            },
+            "cell07": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 0
+            },
+            "cell08": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 0
+            },
+            "cell09": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 0
+            },
+            "cell10": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 1
+            },
+            "cell11": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 1
+            },
+            "cell12": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 1
+            },
+            "cell13": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 1
+            },
+            "cell14": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 1
+            },
+            "cell15": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 1
+            },
+            "cell16": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 1
+            },
+            "cell17": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 1
+            },
+            "cell18": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 1
+            },
+            "cell19": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 1
+            },
+            "cell20": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 2
+            },
+            "cell21": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 2
+            },
+            "cell22": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 2
+            },
+            "cell23": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 2
+            },
+            "cell24": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 2
+            },
+            "cell25": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 2
+            },
+            "cell26": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 2
+            },
+            "cell27": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 2
+            },
+            "cell28": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 2
+            },
+            "cell29": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 2
+            },
+            "cell30": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 3
+            },
+            "cell31": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 3
+            },
+            "cell32": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 3
+            },
+            "cell33": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 3
+            },
+            "cell34": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 3
+            },
+            "cell35": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 3
+            },
+            "cell36": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 3
+            },
+            "cell37": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 3
+            },
+            "cell38": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 3
+            },
+            "cell39": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 3
+            },
+            "cell40": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 4
+            },
+            "cell41": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 4
+            },
+            "cell42": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 4
+            },
+            "cell43": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 4
+            },
+            "cell44": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 4
+            },
+            "cell45": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 4
+            },
+            "cell46": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 4
+            },
+            "cell47": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 4
+            },
+            "cell48": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 4
+            },
+            "cell49": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 4
+            },
+            "cell50": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 5
+            },
+            "cell51": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 5
+            },
+            "cell52": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 5
+            },
+            "cell53": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 5
+            },
+            "cell54": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 5
+            },
+            "cell55": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 5
+            },
+            "cell56": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 5
+            },
+            "cell57": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 5
+            },
+            "cell58": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 5
+            },
+            "cell59": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 5
+            },
+            "cell60": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 6
+            },
+            "cell61": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 6
+            },
+            "cell62": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 6
+            },
+            "cell63": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 6
+            },
+            "cell64": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 6
+            },
+            "cell65": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 6
+            },
+            "cell66": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 6
+            },
+            "cell67": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 6
+            },
+            "cell68": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 6
+            },
+            "cell69": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 6
+            },
+            "cell70": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 7
+            },
+            "cell71": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 7
+            },
+            "cell72": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 7
+            },
+            "cell73": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 7
+            },
+            "cell74": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 7
+            },
+            "cell75": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 7
+            },
+            "cell76": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 7
+            },
+            "cell77": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 7
+            },
+            "cell78": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 7
+            },
+            "cell79": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 7
+            },
+            "cell80": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 8
+            },
+            "cell81": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 8
+            },
+            "cell82": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 8
+            },
+            "cell83": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 8
+            },
+            "cell84": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 8
+            },
+            "cell85": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 8
+            },
+            "cell86": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 8
+            },
+            "cell87": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 8
+            },
+            "cell88": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 8
+            },
+            "cell89": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 8
+            },
+            "cell90": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 0,
+                "y": 9
+            },
+            "cell91": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 1,
+                "y": 9
+            },
+            "cell92": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 2,
+                "y": 9
+            },
+            "cell93": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 3,
+                "y": 9
+            },
+            "cell94": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 4,
+                "y": 9
+            },
+            "cell95": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 5,
+                "y": 9
+            },
+            "cell96": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 6,
+                "y": 9
+            },
+            "cell97": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 7,
+                "y": 9
+            },
+            "cell98": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 8,
+                "y": 9
+            },
+            "cell99": {
+                "idBattleShip": -1,
+                "isHead": false,
+                "state": 1,
+                "x": 9,
+                "y": 9
+            },
+            "height": 10,
+            "width": 10
+        },
+        "playerShipManager": {
+            "ship0": {
+                "direction": 0,
+                "id": 100,
+                "length": 1,
+                "segments": [
+                    {
+                        "State": 2,
+                        "idBattleship": 100,
+                        "isHead": true,
+                        "x": 0,
+                        "y": 0
+                    }
+                ]
+            }
         }
     },
-    "currentDamage": 1,
-    "playerAbilityManager": {
-        "abilities": [
-            "Bombardment",
-            "DoubleDamage",
-            "Scaner"
-        ]
-    },
-    "playerField": {
-        "cell00": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 0,
-            "y": 0
-        },
-        "cell01": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 1,
-            "y": 0
-        },
-        "cell02": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 2,
-            "y": 0
-        },
-        "cell03": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 3,
-            "y": 0
-        },
-        "cell04": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 4,
-            "y": 0
-        },
-        "cell10": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 0,
-            "y": 1
-        },
-        "cell11": {
-            "idBattleShip": 100,
-            "state": 2,
-            "x": 1,
-            "y": 1
-        },
-        "cell12": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 2,
-            "y": 1
-        },
-        "cell13": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 3,
-            "y": 1
-        },
-        "cell14": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 4,
-            "y": 1
-        },
-        "cell20": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 0,
-            "y": 2
-        },
-        "cell21": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 1,
-            "y": 2
-        },
-        "cell22": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 2,
-            "y": 2
-        },
-        "cell23": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 3,
-            "y": 2
-        },
-        "cell24": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 4,
-            "y": 2
-        },
-        "cell30": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 0,
-            "y": 3
-        },
-        "cell31": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 1,
-            "y": 3
-        },
-        "cell32": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 2,
-            "y": 3
-        },
-        "cell33": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 3,
-            "y": 3
-        },
-        "cell34": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 4,
-            "y": 3
-        },
-        "cell40": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 0,
-            "y": 4
-        },
-        "cell41": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 1,
-            "y": 4
-        },
-        "cell42": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 2,
-            "y": 4
-        },
-        "cell43": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 3,
-            "y": 4
-        },
-        "cell44": {
-            "idBattleShip": -1,
-            "state": 1,
-            "x": 4,
-            "y": 4
-        },
-        "height": 5,
-        "width": 5
-    },
-    "playerShipManager": {
-        "ship0": {
-            "direction": 0,
-            "id": 100,
-            "length": 1,
-            "segments": [
-                {
-                    "State": 2,
-                    "idBattleship": 100,
-                    "isHead": true
-                }
-            ]
-        }
-    }
+    "hash": "8c6f5e678e2a239b"
 }

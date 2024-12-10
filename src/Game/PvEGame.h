@@ -18,24 +18,16 @@ class PvEGame : public Game {
 	Player* currentEnemy;
 	int& countMoves;
 	int& countRounds;
+	std::string fileName;
 
 	public:
-	PvEGame(User& user, Bot& bot, GameState& state): user(user), bot(bot), state(state), countMoves(state.getMoves()), countRounds(state.getRounds()){};
+	PvEGame(User& user, Bot& bot, GameState& state, std::string fileName): user(user), bot(bot), state(state), countMoves(state.getMoves()), countRounds(state.getRounds()), fileName(fileName){};
 	// PvEGame(int width, int height, int numLength4, int numLength3, int numLength2, int numLength1);
 	void start () override;
 	void placeShips() override;
 	void process() override;
 	void load(std::string fileName)override;
 	void save(std::string fileName) override;
-	void setBot(Bot* bot);
-	void setUser(User* user);
-
-
-
-	// void placeShip (int index, int x, int y, Direction direction) override;
-	// void placeEnemyShips(int length, std::vector<int> sizes) override;
-	// void saveGame(std::string name) override;
-	// void loadGame(std::string name) override;
 
 	GameState getGameState() override;
 };

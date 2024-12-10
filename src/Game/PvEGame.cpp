@@ -16,13 +16,13 @@ void PvEGame::placeShips()
 
 void PvEGame::process()
 {
-	std::string filename = "/Users/kirillverdin/programming/oop/File.json";
-	std::cout << "Ваш текущий урон: "<<this->user.getDamage() << '\n';
+	// std::string filename = "/Users/kirillverdin/programming/oop/File.json";
+	// std::cout << "Ваш текущий урон: "<<this->user.getDamage() << '\n';
 	while (!this->user.getShipManager().isDefeated())
 	{
-		std::cout << countMoves << " move\n";
+		// std::cout << countMoves << " move\n";
 		auto state = this->getGameState();
-		std::cout << state;
+		std::cout << state << '\n';
 		if (countMoves % 2)
 		{
 			this->currentPlayer = &user;
@@ -39,12 +39,12 @@ void PvEGame::process()
 			auto action = this->currentPlayer->move(*(this->currentEnemy));
 			if (action == Action::Save)
 			{
-				this->save(filename);
+				this->save(fileName);
 				continue;
 			}
 			if (action == Action::Load)
 			{
-				this->load(filename);
+				this->load(fileName);
 				auto state = this->getGameState();
 				std::cout << state;
 				std::cout << "Игра была успешно загружена!";
@@ -61,10 +61,9 @@ void PvEGame::process()
 			auto field = this->bot.getField();
 			auto sm = this->bot.getShipManager();
 			this->bot = Bot(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
-			this->state.setBot(this->bot);
+			this->state.getBot() = this->bot;
 			// this->bot = std::make_unique<Bot>(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
 			this->bot.placeShips();
-			std::cout << "yo\n";
 			this->countRounds++;
 		}
 		countMoves++;
@@ -89,22 +88,7 @@ void PvEGame::load(std::string filename)
 		std::cerr << "Error parsing JSON: " << e.what() << std::endl;
 		return;
 	}
-	// this->bot = std::make_unique<Bot>(state.getBot());
-	// this->user = std::make_unique<User>(state.getUser());
-	// std::cout << "ya user\n";
 
-	// this->countMoves = state.getMoves();
-	// this->countRounds = state.getRounds();
-	// std::cout << "uoflskdakdpakd;ojfdajkf\n";
-	// if (countMoves % 2)
-	// {
-	// 	this->currentPlayer = user.get();
-	// 	this->currentEnemy = bot.get();
-	// }
-	// else
-	// {
-	// 	this->currentPlayer = bot.get();
-	// 	this->currentEnemy = user.get();
 	// }
 }
 

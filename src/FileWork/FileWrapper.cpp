@@ -1,6 +1,6 @@
 #include "FileWrapper.h"
 
-FileWrapper::FileWrapper(const std::string& fileName) : file(fileName){}
+FileWrapper::FileWrapper(const std::string& fileName) : file(fileName), fileName(fileName){}
 
 FileWrapper::~FileWrapper()
 {

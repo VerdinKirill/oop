@@ -26,11 +26,6 @@ public:
 	int& getRounds();
 	int& getMoves();
 	std::string getHash(std::string data);
-	void setBot(Bot &bot);
-	void setUser(User& user);
-	void setMoves(int& moves);
-	void setRounds(int& rounds);
-	void setGameComponents(std::unique_ptr<Bot> newBot, std::unique_ptr<User> newUser);
 	friend std::ostream &operator<<(std::ostream &os, GameState &game);
 	friend FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state);
 	GameState &loadGame(const std::string fileName);

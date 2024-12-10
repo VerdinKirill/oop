@@ -35,6 +35,7 @@ std::ostream &operator<<(std::ostream &os, GameState &state)
 	auto skillVisitor = SkillPrinter();
 	auto userField = state.getUser().getField().to_string();
 	auto botField = state.getBot().getField().to_string();
+	os << "----------------------------------------------------------------------------------\n";
 	os << "Раунд" << state.getRounds() << '\n';
 	os << "Ваше поле\n";
 	os << userField << '\n';
@@ -51,6 +52,7 @@ std::ostream &operator<<(std::ostream &os, GameState &state)
 		auto str = userSkillManager[i]->accept(&skillVisitor);
 		os << i + 1 << ". " << str << '\n';
 	}
+	os << "----------------------------------------------------------------------------------\n";
 	return os;
 }
 
@@ -156,24 +158,4 @@ GameState &GameState::loadGame(const std::string fileName)
 	FileWrapper fileWrapper(fileName);
 	fileWrapper >> *this;
 	return *this;
-}
-
-void GameState::setBot(Bot &bot)
-{
-	this->bot = bot;
-}
-
-void GameState::setMoves(int &moves)
-{
-	this->countMoves = moves;
-}
-
-void GameState::setRounds(int &rounds)
-{
-	this->countRounds = rounds;
-}
-
-void GameState::setUser(User &user)
-{
-	this->user = user;
 }

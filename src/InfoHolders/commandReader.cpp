@@ -25,6 +25,7 @@ Command CommandReader::read()
 		return Command::load;
 	}
 	else {
+		std::cin.clear();
 		throw UnknownCommandException(ch);
 	}
 };

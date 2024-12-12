@@ -35,18 +35,15 @@ public:
 		}
 		return *this;
 	}
+	User();
 	Action move(Player &player) override;
 	void placeShips() override;
 
 	bool attack(Player &player, int x, int y);
-	User();
 	bool useSkill(Player &player);
 	Field& getField() override;
 	ShipManager& getShipManager() override;
 	SkillManager& getSkillManager();
-	void setShipManager(ShipManager& sm);
-	void setField(Field& f);
-	void setSkillManager(SkillManager& sm);
 
 
 };

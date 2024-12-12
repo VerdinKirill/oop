@@ -10,7 +10,9 @@ std::pair<int, int> CoordReader::readCoords()
     }
     catch (std::exception &e)
     {
-        // throw ReaderException("Были введены неверные координаты");
+        std::cin.clear();
+		std::cin.ignore(10, '\n');
+        throw ReaderException("Были введены неверные координаты");
     }
     return {x, y};
 }

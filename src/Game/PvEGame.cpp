@@ -16,11 +16,8 @@ void PvEGame::placeShips()
 
 void PvEGame::process()
 {
-	// std::string filename = "/Users/kirillverdin/programming/oop/File.json";
-	// std::cout << "Ваш текущий урон: "<<this->user.getDamage() << '\n';
 	while (!this->user.getShipManager().isDefeated())
 	{
-		// std::cout << countMoves << " move\n";
 		auto state = this->getGameState();
 		std::cout << state << '\n';
 		if (countMoves % 2)
@@ -39,12 +36,12 @@ void PvEGame::process()
 			auto action = this->currentPlayer->move(*(this->currentEnemy));
 			if (action == Action::Save)
 			{
-				this->save(fileName);
+				this->save();
 				continue;
 			}
 			if (action == Action::Load)
 			{
-				this->load(fileName);
+				this->load();
 				auto state = this->getGameState();
 				std::cout << state;
 				std::cout << "Игра была успешно загружена!";
@@ -62,7 +59,6 @@ void PvEGame::process()
 			auto sm = this->bot.getShipManager();
 			this->bot = Bot(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
 			this->state.getBot() = this->bot;
-			// this->bot = std::make_unique<Bot>(field.GetWidth(), field.GetHeight(), sm.getNum4Length(), sm.getNum3Length(), sm.getNum2Length(), sm.getNum1Length());
 			this->bot.placeShips();
 			this->countRounds++;
 		}
@@ -76,12 +72,11 @@ GameState PvEGame::getGameState()
 	return this->state;
 }
 
-void PvEGame::load(std::string filename)
+void PvEGame::load()
 {	
-	auto state = this->getGameState();
 	try
 	{
-		state.loadGame(filename);
+		gameSaver.load(state);
 	}
 	catch (nlohmann::json::exception &e)
 	{
@@ -92,10 +87,9 @@ void PvEGame::load(std::string filename)
 	// }
 }
 
-void PvEGame::save(std::string filename)
+void PvEGame::save()
 {
-	auto state = this->getGameState();
-	state.saveGame(filename);
+	gameSaver.save(state);
 }
 // void PvEGame::move(int x, int y, bool isUseAbility)
 // {

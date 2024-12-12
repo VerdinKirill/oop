@@ -19,8 +19,8 @@ class Game
 	virtual GameState getGameState() = 0;
 	virtual void placeShips() = 0;
 	virtual void process() = 0;
-	virtual void load(std::string fileName) = 0;
-	virtual void save(std::string fileName) = 0;
+	virtual void load() = 0;
+	virtual void save() = 0;
 	virtual void start() = 0;
 };
 

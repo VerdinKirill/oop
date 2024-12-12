@@ -28,6 +28,8 @@ Direction DirectionReader::read()
 	}
 	else
 	{
+		std::cin.clear();
+		std::cin.ignore(10, '\n');
 		throw UnknownCommandException(d);
 	}
 }

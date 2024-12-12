@@ -55,15 +55,6 @@ ShipManager &Bot::getShipManager()
 	return this->shipManager;
 }
 
-void Bot::setShipManager(ShipManager &sm)
-{
-	this->shipManager = sm;
-}
-
-void Bot::setField(Field &f)
-{
-	this->field = f;
-}
 
 //  User::useSkill(Player& player)
 // {

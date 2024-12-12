@@ -65,7 +65,6 @@ bool User::attack(Player &player, int x, int y)
 {
 	auto result = player.getField().AttackCell(x, y, damage);
 	damage = 1;
-	std::cout << "ya tut";
 	if (result)
 	{
 		this->skillManager.addSkill();
@@ -121,15 +120,14 @@ void User::placeShips()
 			direction = holderDirection.getDirection();
 		}catch(UnknownCommandException& error)
 		{
-			std::cout << error.what() << '\n';
+			std::cout << error.what() << "  " << i << '\n';
 			i--;
 			continue;
 		}
 		try
 		{
 			auto &ship = shipManager[i];
-			this->field.SetBattleship(coords.first, coords.second, ship, direction);
-			std::cout << this->field[coords.first][coords.second].GetFieldState() << "state of current cell\n";
+			this->field.SetBattleship(coords.second-1, coords.first-1, ship, direction);
 			this->field.OpenField();
 		}
 		catch (ShipNearAnotherException &e)
@@ -160,20 +158,6 @@ int User::getDamage()
 	return this->damage;
 }
 
-void User::setShipManager(ShipManager &sm)
-{
-	this->shipManager = sm;
-}
-
-void User::setField(Field &f)
-{
-	this->field = f;
-}
-
-void User::setSkillManager(SkillManager &sm)
-{
-	this->skillManager = sm;
-}
 //  User::useSkill(Player& player)
 // {
 // 	auto infoHolder = SkillInfoHolder(&this->game.getEnemyShipManager(), &this->game.getEnemyField(), CoordHolder());

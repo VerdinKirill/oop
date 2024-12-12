@@ -9,6 +9,7 @@
 #include "../FileWork/Serialization.h"
 #include "../FileWork/Deserialization.h"
 #include "../Exceptions/ModifiedJsonException.h"
+#include "GameSaver.h"
 class Bot;
 class User;
 
@@ -28,6 +29,7 @@ public:
 	std::string getHash(std::string data);
 	friend std::ostream &operator<<(std::ostream &os, GameState &game);
 	friend FileWrapper &operator<<(FileWrapper &fileWrapper, GameState &state);
+	friend FileWrapper &operator>>(FileWrapper &fileWrapper, GameState &state);
 	GameState &loadGame(const std::string fileName);
 	void saveGame(const std::string fileName);
 };
